@@ -120,7 +120,793 @@
   .route-stop.valdorcia .city { color: var(--valdorcia); }
 
   .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== CONTENT SECTIONS ===== */
+  section {
+    padding: 50px 0;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .section-intro {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  /* ===== ACCOMMODATION CARDS ===== */
+  .accommodation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .accom-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .accom-card:hover {
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+  }
+
+  .accom-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: white;
+  }
+
+  .accom-content {
+    padding: 24px;
+  }
+
+  .accom-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .accom-type {
+    display: inline-block;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.05);
+  }
+
+  .accom-detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    font-size: 0.95em;
+    color: var(--text-secondary);
+  }
+
+  .accom-detail strong {
+    color: var(--text);
+  }
+
+  .accom-link {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .accom-link:hover {
+    background: #1a4d1a;
+  }
+
+  /* ===== ROME SECTION ===== */
+  .rome-section {
+    background: var(--rome-light);
+  }
+
+  .rome-section h2 {
+    color: var(--rome);
+  }
+
+  .rome-section .section-intro {
+    color: var(--rome);
+  }
+
+  /* ===== LUCCA SECTION ===== */
+  .lucca-section {
+    background: var(--lucca-light);
+  }
+
+  .lucca-section h2 {
+    color: var(--lucca);
+  }
+
+  .lucca-section .section-intro {
+    color: var(--lucca);
+  }
+
+  /* ===== VAL D'ORCIA SECTION ===== */
+  .valdorcia-section {
+    background: var(--valdorcia-light);
+  }
+
+  .valdorcia-section h2 {
+    color: var(--valdorcia);
+  }
+
+  .valdorcia-section .section-intro {
+    color: var(--valdorcia);
+  }
+
+  /* ===== DAY CARDS ===== */
+  .day-card {
+    background: var(--card);
+    border-left: 4px solid var(--border);
+    margin: 16px 0;
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .day-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  .day-card.rome {
+    border-left-color: var(--rome);
+  }
+
+  .day-card.lucca {
+    border-left-color: var(--lucca);
+  }
+
+  .day-card.valdorcia {
+    border-left-color: var(--valdorcia);
+  }
+
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .day-toggle {
+    font-size: 1.2em;
+    transition: transform 0.3s;
+  }
+
+  .day-card.active .day-toggle {
+    transform: rotate(180deg);
+  }
+
+  .day-details {
+    display: none;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .day-card.active .day-details {
+    display: block;
+  }
+
+  .day-activity {
+    margin: 12px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .day-activity::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--text-secondary);
+  }
+
+  .day-time {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .day-description {
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.2em;
+    }
+
+    .hero {
+      padding: 60px 30px 50px;
+    }
+
+    h2 {
+      font-size: 1.8em;
+    }
+
+    .accommodation-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .route-bar {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .route-arrow {
+      transform: rotate(90deg);
+    }
+  }
 </style>
 </head>
-<body><h1>Italy Trip 2026</h1></body>
+<body>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Wagner Family Italy Trip</h1>
+    <p class="subtitle">A journey through Rome, Lucca, and Val d'Orcia</p>
+    <div class="dates">October 2–13, 2026</div>
+  </div>
+</div>
+
+<!-- ROUTE BAR -->
+<div class="route-bar">
+  <div class="route-stop rome">
+    <div class="city">Rome</div>
+    <div class="nights">5 nights</div>
+  </div>
+  <div class="route-arrow">→</div>
+  <div class="route-stop lucca">
+    <div class="city">Lucca</div>
+    <div class="nights">3 nights</div>
+  </div>
+  <div class="route-arrow">→</div>
+  <div class="route-stop valdorcia">
+    <div class="city">Val d'Orcia</div>
+    <div class="nights">2 nights</div>
+  </div>
+</div>
+
+<!-- ROME SECTION -->
+<section class="rome-section">
+  <div class="container">
+    <h2>Rome</h2>
+    <p class="section-intro">October 2–6 — 5 nights exploring the Eternal City. Gateway to history, food, art, and la dolce vita.</p>
+
+    <div class="accommodation-grid">
+      <div class="accom-card">
+        <div class="accom-image">🏛️</div>
+        <div class="accom-content">
+          <div class="accom-name">Hotel Eden</div>
+          <div class="accom-type">5-Star Luxury</div>
+          <div class="accom-detail"><strong>Location:</strong> Via Ludovisi, Centro</div>
+          <div class="accom-detail"><strong>Rooftop:</strong> Panoramic views of the city</div>
+          <div class="accom-detail"><strong>Pool:</strong> Yes, terraced garden</div>
+          <a href="https://www.dorchestercollection.com/en/rome/hotel-eden/" target="_blank" class="accom-link">Visit Hotel Eden</a>
+        </div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-image">🍷</div>
+        <div class="accom-content">
+          <div class="accom-name">Antico Convento</div>
+          <div class="accom-type">Boutique</div>
+          <div class="accom-detail"><strong>Location:</strong> Piazza Navona area</div>
+          <div class="accom-detail"><strong>Style:</strong> Historic convent conversion</div>
+          <div class="accom-detail"><strong>Size:</strong> 5 rooms, intimate</div>
+          <a href="https://www.anticoaconvento.com/" target="_blank" class="accom-link">Visit Antico Convento</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 1.5em;">Day-by-Day Itinerary</h3>
+
+    <div class="day-card rome active">
+      <div class="day-header">
+        <h4 class="day-title">Day 1: Arrival — October 2</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">10:00 AM</span>
+          <div class="day-description">Arrive at FCO (Fiumicino Airport). Transfer to Hotel Eden.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">1:00 PM</span>
+          <div class="day-description">Check in, lunch at the hotel terrace overlooking the city. Rest and acclimate.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">5:00 PM</span>
+          <div class="day-description">Walk to Piazza Navona and explore the fountains and surrounding area. Aperitivo at a local cafe.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">7:30 PM</span>
+          <div class="day-description">Dinner at a traditional Roman trattoria near the hotel.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card rome">
+      <div class="day-header">
+        <h4 class="day-title">Day 2: Ancient Rome — October 3</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">8:00 AM</span>
+          <div class="day-description">Early breakfast at the hotel. Skip the crowds at the Colosseum.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">9:00 AM</span>
+          <div class="day-description">Guided tour: Colosseum, Roman Forum, Palatine Hill (3 hours, pre-booked).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">1:00 PM</span>
+          <div class="day-description">Lunch at a family-run restaurant near the Forum.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">3:00 PM</span>
+          <div class="day-description">Rest at hotel or visit nearby shop for gelato and espresso.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">6:00 PM</span>
+          <div class="day-description">Sunset from Gianicolo Hill. Wine and nibbles.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">8:00 PM</span>
+          <div class="day-description">Dinner in Trastevere (bohemian neighborhood with cobblestone charm).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card rome">
+      <div class="day-header">
+        <h4 class="day-title">Day 3: Vatican & Sistine — October 4</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">8:00 AM</span>
+          <div class="day-description">Early entry: Vatican Museums and Sistine Chapel (pre-booked, skip-the-line).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">12:30 PM</span>
+          <div class="day-description">St. Peter's Basilica climb to the dome (optional, 330 steps).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">2:00 PM</span>
+          <div class="day-description">Lunch near Castel Sant'Angelo with Tiber views.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">4:00 PM</span>
+          <div class="day-description">Leisurely walk through Trastevere or explore Ghetto district.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">7:00 PM</span>
+          <div class="day-description">Dinner at Michelin-recommended restaurant (reserve in advance).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card rome">
+      <div class="day-header">
+        <h4 class="day-title">Day 4: Food & Hidden Gems — October 5</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">10:00 AM</span>
+          <div class="day-description">Food market tour: Campo de' Fiori and local food scene (2-hour guided tour).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">12:00 PM</span>
+          <div class="day-description">Lunch with the tour group or find a quiet corner for pasta.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">3:00 PM</span>
+          <div class="day-description">Explore lesser-known areas: Spanish Steps, Villa d'Este side streets, Basilica di Santa Maria Maggiore.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">6:00 PM</span>
+          <div class="day-description">Gelato and people-watching at Trevi Fountain (at sunset to avoid peak crowds).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">8:00 PM</span>
+          <div class="day-description">Casual dinner, prepare for early departure to Lucca.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card rome">
+      <div class="day-header">
+        <h4 class="day-title">Day 5: Departure to Lucca — October 6</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">8:00 AM</span>
+          <div class="day-description">Breakfast at hotel. Last-minute shopping or sightseeing if time allows.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">11:00 AM</span>
+          <div class="day-description">Check out and transfer to Rome Termini Station or FCO airport for rental car pickup.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">12:30 PM</span>
+          <div class="day-description">Drive to Lucca (3.5–4 hours via A11).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">4:30 PM</span>
+          <div class="day-description">Arrive in Lucca. Check in to accommodation and settle in.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">6:30 PM</span>
+          <div class="day-description">Stroll the medieval walls and dinner nearby.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LUCCA SECTION -->
+<section class="lucca-section">
+  <div class="container">
+    <h2>Lucca</h2>
+    <p class="section-intro">October 6–8 — 3 nights in this charming walled city. Wine, Renaissance art, and countryside charm.</p>
+
+    <div class="accommodation-grid">
+      <div class="accom-card">
+        <div class="accom-image">🌿</div>
+        <div class="accom-content">
+          <div class="accom-name">Villa San Michele</div>
+          <div class="accom-type">Country Villa</div>
+          <div class="accom-detail"><strong>Location:</strong> Outside Lucca, views of countryside</div>
+          <div class="accom-detail"><strong>Style:</strong> Historic villa, 8 rooms</div>
+          <div class="accom-detail"><strong>Amenities:</strong> Pool, restaurant</div>
+          <a href="https://www.villasanmichele.com/" target="_blank" class="accom-link">Visit Villa San Michele</a>
+        </div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-image">🏰</div>
+        <div class="accom-content">
+          <div class="accom-name">Palazzo Buonvisi</div>
+          <div class="accom-type">Historic Palace Hotel</div>
+          <div class="accom-detail"><strong>Location:</strong> Inside the walled city center</div>
+          <div class="accom-detail"><strong>Style:</strong> Renaissance palazzo converted to luxury hotel</div>
+          <div class="accom-detail"><strong>Rooms:</strong> 12, intimate</div>
+          <a href="https://www.palazzobuonvisi.it/" target="_blank" class="accom-link">Visit Palazzo Buonvisi</a>
+        </div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-image">🌻</div>
+        <div class="accom-content">
+          <div class="accom-name">Fattoria di Fugnano (Top Pick)</div>
+          <div class="accom-type">Agriturisimo VRBO</div>
+          <div class="accom-detail"><strong>Location:</strong> Countryside between Lucca and Pisa</div>
+          <div class="accom-detail"><strong>Style:</strong> Restored farmhouse, family-run</div>
+          <div class="accom-detail"><strong>Amenities:</strong> Pool, orchard, self-catering options</div>
+          <a href="https://www.vrbo.com/it/fattoria-di-fugnano" target="_blank" class="accom-link">Visit Fattoria di Fugnano</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 1.5em;">Day-by-Day Itinerary</h3>
+
+    <div class="day-card lucca active">
+      <div class="day-header">
+        <h4 class="day-title">Day 6: Lucca Arrival & Exploration — October 6</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">4:30 PM</span>
+          <div class="day-description">Arrive in Lucca. Check into accommodation. Walk the medieval walls at sunset.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">6:30 PM</span>
+          <div class="day-description">Dinner at local restaurant. Sample Tuscan specialties (ribollita, bistecca alla fiorentina).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card lucca">
+      <div class="day-header">
+        <h4 class="day-title">Day 7: Wine Country & Villages — October 7</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">9:00 AM</span>
+          <div class="day-description">Drive to Chianti region (45 minutes). Visit a family-owned winery for tasting and lunch.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">1:00 PM</span>
+          <div class="day-description">Winery lunch: local cheese, cured meats, fresh pasta, paired wines.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">3:30 PM</span>
+          <div class="day-description">Drive to Monteriggioni (hilltop village) or Gaiole in Chianti. Explore cobblestone streets.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">6:00 PM</span>
+          <div class="day-description">Return to Lucca. Aperitivo at Piazza dell'Anfiteatro.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">7:30 PM</span>
+          <div class="day-description">Dinner at trattoria specializing in handmade pasta.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card lucca">
+      <div class="day-header">
+        <h4 class="day-title">Day 8: Departure to Val d'Orcia — October 8</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">9:00 AM</span>
+          <div class="day-description">Leisurely breakfast. Final walk through Lucca's Renaissance churches and cathedral.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">11:00 AM</span>
+          <div class="day-description">Check out and drive to Val d'Orcia (2.5–3 hours via A11 and SR146).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">2:30 PM</span>
+          <div class="day-description">Arrive in Val d'Orcia. Check in and rest.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">5:00 PM</span>
+          <div class="day-description">Golden hour photography: cypress-lined roads, rolling hills, Pienza in the distance.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">7:30 PM</span>
+          <div class="day-description">Dinner at a farmhouse restaurant overlooking the Orcia Valley.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VAL D'ORCIA SECTION -->
+<section class="valdorcia-section">
+  <div class="container">
+    <h2>Val d'Orcia</h2>
+    <p class="section-intro">October 8–10 — 2 nights in this UNESCO World Heritage landscape. Golden light, rolling hills, perfect wine.</p>
+
+    <div class="accommodation-grid">
+      <div class="accom-card">
+        <div class="accom-image">🌅</div>
+        <div class="accom-content">
+          <div class="accom-name">Podere Salicotto</div>
+          <div class="accom-type">Agriturismo</div>
+          <div class="accom-detail"><strong>Location:</strong> Heart of Val d'Orcia</div>
+          <div class="accom-detail"><strong>Style:</strong> Restored farmhouse, family-run</div>
+          <div class="accom-detail"><strong>Amenities:</strong> Pool, restaurant, wine cellar</div>
+          <a href="https://www.poderesalicotto.com/" target="_blank" class="accom-link">Visit Podere Salicotto</a>
+        </div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-image">🏛️</div>
+        <div class="accom-content">
+          <div class="accom-name">Il Convento</div>
+          <div class="accom-type">Monastery Hotel</div>
+          <div class="accom-detail"><strong>Location:</strong> Pienza, adjacent hilltop town</div>
+          <div class="accom-detail"><strong>Style:</strong> Historic convent conversion, boutique</div>
+          <div class="accom-detail"><strong>Rooms:</strong> 7, intimate and spiritual</div>
+          <a href="https://www.ilconventopienza.com/" target="_blank" class="accom-link">Visit Il Convento</a>
+        </div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-image">🍷</div>
+        <div class="accom-content">
+          <div class="accom-name">Castiglion d'Orcia (Rocca d'Orcia)</div>
+          <div class="accom-type">Castle Estate</div>
+          <div class="accom-detail"><strong>Location:</strong> Medieval village with panoramic views</div>
+          <div class="accom-detail"><strong>Style:</strong> Historic fortress apartments</div>
+          <div class="accom-detail"><strong>Amenities:</strong> Restaurants, wine bar, shops</div>
+          <a href="https://www.castiglionedorcia.net/" target="_blank" class="accom-link">Visit Castiglion d'Orcia</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 1.5em;">Day-by-Day Itinerary</h3>
+
+    <div class="day-card valdorcia active">
+      <div class="day-header">
+        <h4 class="day-title">Day 9: Val d'Orcia Discovery — October 9</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">9:00 AM</span>
+          <div class="day-description">Sunrise hike to Pienza. Walk the cypress-lined road (iconic Tuscany landscape).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">11:00 AM</span>
+          <div class="day-description">Explore Pienza: Renaissance town, Piazza Pio II, Pecorino cheese tasting at a local shop.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">1:30 PM</span>
+          <div class="day-description">Lunch at a farm-to-table restaurant in Pienza or nearby.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">3:30 PM</span>
+          <div class="day-description">Drive to Montalcino (30 minutes). Visit Brunello wine cellars (pre-booked tasting).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">6:00 PM</span>
+          <div class="day-description">Return to accommodation. Rest and prepare for dinner.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">7:30 PM</span>
+          <div class="day-description">Sunset dinner overlooking the Val d'Orcia.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card valdorcia">
+      <div class="day-header">
+        <h4 class="day-title">Day 10: Return to Rome — October 10</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">8:30 AM</span>
+          <div class="day-description">Final breakfast in the Tuscan countryside. Collect souvenirs (wine, pasta, cheese).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">10:00 AM</span>
+          <div class="day-description">Drive back to Rome (3.5–4 hours via A11).</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">2:00 PM</span>
+          <div class="day-description">Arrive in Rome. Return rental car and transfer to hotel or airport.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">Evening</span>
+          <div class="day-description">Depending on flight time: final dinner in Rome, last-minute sightseeing, or rest before departure.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-card valdorcia">
+      <div class="day-header">
+        <h4 class="day-title">Day 11: Final Day in Rome — October 11 (Optional)</h4>
+        <span class="day-toggle">↓</span>
+      </div>
+      <div class="day-details">
+        <div class="day-activity">
+          <span class="day-time">Morning</span>
+          <div class="day-description">If flying out later in the day: visit any missed attractions or museums.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">Afternoon</span>
+          <div class="day-description">Leisurely lunch and coffee. Pack final souvenirs.</div>
+        </div>
+        <div class="day-activity">
+          <span class="day-time">Evening</span>
+          <div class="day-description">Depart for airport or continue travels.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTURE SECTION -->
+<section style="background: white; text-align: center;">
+  <div class="container">
+    <h2>Departure</h2>
+    <p class="section-intro">October 12–13</p>
+    <p style="font-size: 1.1em; color: var(--text-secondary); margin-bottom: 30px;">
+      Flight home on October 13. Return rental car, pack memories, and plan the next adventure.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: var(--text); color: white; padding: 40px 20px; text-align: center;">
+  <div class="container">
+    <p style="margin: 0; font-size: 0.95em;">Enjoy every moment in Italy. Ciao, bella!</p>
+  </div>
+</footer>
+
+<script>
+  // Day card toggle functionality
+  document.querySelectorAll('.day-card').forEach(card => {
+    card.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+
+  // Offline image handling
+  window.addEventListener('offline', function() {
+    document.querySelectorAll('img').forEach(img => {
+      img.style.display = 'none';
+      if (img.nextElementSibling && img.nextElementSibling.tagName === 'SVG') {
+        img.nextElementSibling.innerHTML = '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14">Image loads when online</text>';
+      }
+    });
+  });
+
+  // Fallback for missing Unsplash images
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!window.navigator.onLine) {
+      document.querySelectorAll('.hero-bg').forEach(bg => {
+        bg.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+      });
+    }
+  });
+
+  // SVG placeholder for accommodation cards
+  document.querySelectorAll('.accom-image').forEach(card => {
+    if (!card.querySelector('img')) {
+      const svg = document.createElement('svg');
+      svg.setAttribute('viewBox', '0 0 200 200');
+      svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      svg.style.cssText = 'width:100%;height:100%;';
+      svg.innerHTML = `
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="200" height="200" fill="url(#grad)"></rect>
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14">Image loads when online</text>
+      `;
+      if (!window.navigator.onLine) {
+        card.appendChild(svg);
+      }
+    }
+  });
+});
+</script>
+
+</body>
 </html>
