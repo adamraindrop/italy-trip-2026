@@ -121,31 +121,88 @@
 
   .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-  /* ===== CONTENT SECTIONS ===== */
-  section {
-    padding: 50px 0;
+  /* ===== SECTION HERO IMAGES ===== */
+  .section-hero {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+  }
+  .section-hero-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+    display: block;
+  }
+  .section-hero-img.bottom-rounded {
+    border-radius: 16px;
   }
 
-  h2 {
+  /* ===== LEG SECTIONS ===== */
+  .leg-section {
+    margin: 0 auto 40px;
+    max-width: 900px;
+    padding: 0 20px;
+  }
+  .leg-section.has-hero {
+    margin-top: 0;
+  }
+
+  .leg-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding: 24px 0 14px;
+    border-bottom: 3px solid var(--border);
+  }
+  .leg-header .leg-badge {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4em;
+    flex-shrink: 0;
+  }
+  .leg-header h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: var(--text);
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+  .leg-header .leg-dates {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin-left: auto;
+    white-space: nowrap;
   }
 
-  .section-intro {
-    font-size: 1.1em;
-    color: var(--text-secondary);
-    margin-bottom: 40px;
-    max-width: 600px;
+  .rome-section .leg-header { border-color: var(--rome); }
+  .rome-section .leg-badge { background: var(--rome-light); }
+  .lucca-section .leg-header { border-color: var(--lucca); }
+  .lucca-section .leg-badge { background: var(--lucca-light); }
+  .valdorcia-section .leg-header { border-color: var(--valdorcia); }
+  .valdorcia-section .leg-badge { background: var(--valdorcia-light); }
+
+  .section-label {
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
   }
+  .rome-section .section-label { color: var(--rome); background: var(--rome-light); }
+  .lucca-section .section-label { color: var(--lucca); background: var(--lucca-light); }
+  .valdorcia-section .section-label { color: var(--valdorcia); background: var(--valdorcia-light); }
 
   /* ===== ACCOMMODATION CARDS ===== */
-  .accommodation-grid {
+  .accom-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 30px;
   }
 
   .accom-card {
@@ -153,758 +210,1008 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
-    transition: all 0.3s ease;
-  }
-
-  .accom-card:hover {
-    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-    transform: translateY(-4px);
-  }
-
-  .accom-image {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: box-shadow 0.2s;
+    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3em;
-    color: white;
+    flex-direction: row;
+  }
+  .accom-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .accom-card.recommended { border-left: 4px solid var(--accent); }
+
+  .accom-thumb {
+    width: 200px;
+    min-height: 200px;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 700px) {
+    .accom-card { flex-direction: column; }
+    .accom-thumb { width: 100%; height: 180px; min-height: auto; }
   }
 
-  .accom-content {
+  .accom-body {
     padding: 24px;
+    flex: 1;
+    position: relative;
   }
 
-  .accom-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
-    font-weight: 600;
-    margin-bottom: 8px;
+  .card-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 0.7em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 20px;
   }
+  .badge-pick { background: #E8F5E9; color: #2E7D32; }
+  .badge-value { background: #E3F2FD; color: #1565C0; }
+  .badge-design { background: #F3E5F5; color: #7B1FA2; }
+  .badge-splurge { background: #FFF3E0; color: #E65100; }
+  .badge-hotel { background: #ECEFF1; color: #455A64; }
 
-  .accom-type {
-    display: inline-block;
-    font-size: 0.75em;
+  .card-type {
+    font-size: 0.7em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 12px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    background: rgba(0,0,0,0.05);
+    color: var(--text-secondary);
+    margin-bottom: 6px;
   }
-
-  .accom-detail {
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .card-title a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .card-title a:hover { border-bottom-color: var(--text); }
+  .card-meta {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+  .card-meta .stars { color: var(--star); }
+  .card-desc {
+    font-size: 0.9em;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .card-details {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
-    margin: 8px 0;
-    font-size: 0.95em;
+    margin-bottom: 12px;
+  }
+  .detail-pill {
+    font-size: 0.78em;
+    background: #F5F5F0;
+    padding: 4px 10px;
+    border-radius: 20px;
     color: var(--text-secondary);
   }
-
-  .accom-detail strong {
-    color: var(--text);
+  .card-price {
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent);
   }
-
-  .accom-link {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 10px 16px;
+  .card-links {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .card-links a {
+    font-size: 0.8em;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .card-links a:hover {
     background: var(--accent);
     color: white;
-    text-decoration: none;
-    border-radius: 6px;
+  }
+
+  .advisor-note {
+    background: #F9F7F4;
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 20px 0 30px;
+    border-radius: 0 8px 8px 0;
     font-size: 0.9em;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-
-  .accom-link:hover {
-    background: #1a4d1a;
-  }
-
-  /* ===== ROME SECTION ===== */
-  .rome-section {
-    background: var(--rome-light);
-  }
-
-  .rome-section h2 {
-    color: var(--rome);
-  }
-
-  .rome-section .section-intro {
-    color: var(--rome);
-  }
-
-  /* ===== LUCCA SECTION ===== */
-  .lucca-section {
-    background: var(--lucca-light);
-  }
-
-  .lucca-section h2 {
-    color: var(--lucca);
-  }
-
-  .lucca-section .section-intro {
-    color: var(--lucca);
-  }
-
-  /* ===== VAL D'ORCIA SECTION ===== */
-  .valdorcia-section {
-    background: var(--valdorcia-light);
-  }
-
-  .valdorcia-section h2 {
-    color: var(--valdorcia);
-  }
-
-  .valdorcia-section .section-intro {
-    color: var(--valdorcia);
+    font-style: italic;
+    color: #444;
   }
 
   /* ===== DAY CARDS ===== */
   .day-card {
     background: var(--card);
-    border-left: 4px solid var(--border);
-    margin: 16px 0;
-    padding: 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
   }
-
-  .day-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  }
-
-  .day-card.rome {
-    border-left-color: var(--rome);
-  }
-
-  .day-card.lucca {
-    border-left-color: var(--lucca);
-  }
-
-  .day-card.valdorcia {
-    border-left-color: var(--valdorcia);
-  }
-
   .day-header {
+    padding: 16px 24px;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    user-select: none;
   }
-
-  .day-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  .day-toggle {
-    font-size: 1.2em;
-    transition: transform 0.3s;
-  }
-
-  .day-card.active .day-toggle {
-    transform: rotate(180deg);
-  }
-
-  .day-details {
+  .day-header:hover { background: #FAFAF7; }
+  .day-header .toggle { font-size: 0.8em; color: #999; transition: transform 0.2s; }
+  .day-header .toggle.open { transform: rotate(180deg); }
+  .day-content {
+    padding: 0 24px 20px;
     display: none;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+  }
+  .day-content.open { display: block; }
+
+  /* ===== DAY HIGHLIGHT IMAGES ===== */
+  .day-highlights {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .day-highlights img {
+    width: 160px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
   }
 
-  .day-card.active .day-details {
-    display: block;
+  .time-block {
+    margin-bottom: 16px;
+  }
+  .time-block:last-child { margin-bottom: 0; }
+  .time-label {
+    font-size: 0.72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .time-block p {
+    font-size: 0.9em;
+    line-height: 1.65;
+    margin-bottom: 6px;
+  }
+  .time-block a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .time-block a:hover { border-bottom-style: solid; }
+
+  /* ===== LOGISTICS ===== */
+  .logistics-section {
+    margin: 40px auto;
+    max-width: 900px;
+    padding: 0 20px;
+  }
+  .logistics-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
   }
 
-  .day-activity {
-    margin: 12px 0;
-    padding-left: 20px;
-    position: relative;
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
   }
+  @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
 
-  .day-activity::before {
-    content: '→';
-    position: absolute;
-    left: 0;
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .info-card h3 {
+    font-size: 0.95em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-card p, .info-card li {
+    font-size: 0.85em;
+    line-height: 1.6;
     color: var(--text-secondary);
   }
+  .info-card ul { list-style: none; padding: 0; }
+  .info-card li { padding: 4px 0; padding-left: 16px; position: relative; }
+  .info-card li::before { content: ""; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+  .info-card a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  .info-card a:hover { border-bottom-style: solid; }
 
-  .day-time {
-    font-weight: 600;
-    color: var(--text);
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+    margin: 16px 0;
   }
-
-  .day-description {
+  .budget-table th {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 700;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--text-secondary);
+  }
+  .budget-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #F0EDE8;
+  }
+  .budget-table tr:last-child td {
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 1.05em;
+  }
+  .budget-table .notes { color: var(--text-secondary); font-size: 0.9em; }
+
+  .checklist {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .checklist h3 {
+    font-size: 0.95em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .checklist label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 0.88em;
+    cursor: pointer;
+    line-height: 1.5;
+  }
+  .checklist input[type="checkbox"] {
     margin-top: 4px;
+    accent-color: var(--accent);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .checklist a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    font-size: 0.82em;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
   }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 2.2em;
-    }
+  .rome-section .day-header { border-left: 3px solid var(--rome); }
+  .lucca-section .day-header { border-left: 3px solid var(--lucca); }
+  .valdorcia-section .day-header { border-left: 3px solid var(--valdorcia); }
 
-    .hero {
-      padding: 60px 30px 50px;
-    }
-
-    h2 {
-      font-size: 1.8em;
-    }
-
-    .accommodation-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .route-bar {
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .route-arrow {
-      transform: rotate(90deg);
-    }
+  /* Image error fallback */
+  img[data-fallback] {
+    background: linear-gradient(135deg, #E8E5E0 0%, #D5D0C8 100%);
   }
 </style>
 </head>
 <body>
 
-<!-- HERO SECTION -->
+<!-- ===== HERO ===== -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Wagner Family Italy Trip</h1>
-    <p class="subtitle">A journey through Rome, Lucca, and Val d'Orcia</p>
-    <div class="dates">October 2–13, 2026</div>
+    <h1>Italy 2026</h1>
+    <div class="subtitle">The Wagner Family</div>
+    <div class="dates">Oct 3 - 14 &middot; 11 Nights &middot; 6 Travelers</div>
   </div>
 </div>
 
-<!-- ROUTE BAR -->
 <div class="route-bar">
-  <div class="route-stop rome">
-    <div class="city">Rome</div>
-    <div class="nights">5 nights</div>
+  <div class="route-stop"><div class="city">Nashville</div><div class="nights">Home</div></div>
+  <div class="route-arrow">&rarr;</div>
+  <div class="route-stop rome"><div class="city">Rome</div><div class="nights">4 nights</div></div>
+  <div class="route-arrow">&rarr;</div>
+  <div class="route-stop lucca"><div class="city">Lucca</div><div class="nights">4 nights</div></div>
+  <div class="route-arrow">&rarr;</div>
+  <div class="route-stop valdorcia"><div class="city">Val d'Orcia</div><div class="nights">3 nights</div></div>
+  <div class="route-arrow">&rarr;</div>
+  <div class="route-stop"><div class="city">Florence</div><div class="nights">Fly home</div></div>
+</div>
+
+<!-- ============ ROME ============ -->
+<div class="section-hero">
+  <img class="section-hero-img" src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80" alt="Colosseum at golden hour" data-fallback>
+</div>
+<div class="leg-section rome-section has-hero">
+  <div class="leg-header">
+    <div class="leg-badge">&#127471;&#127481;</div>
+    <div>
+      <h2>Rome</h2>
+    </div>
+    <div class="leg-dates">Oct 3-7 &middot; 4 Nights</div>
   </div>
-  <div class="route-arrow">→</div>
-  <div class="route-stop lucca">
-    <div class="city">Lucca</div>
-    <div class="nights">3 nights</div>
+
+  <div class="section-label">Where to Stay</div>
+
+  <div class="accom-grid">
+    <div class="accom-card recommended">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Elegant apartment interior" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-pick">Top Pick</span>
+        <div class="card-type">Airbnb</div>
+        <div class="card-title"><a href="https://www.airbnb.com/rooms/1579814480753707186" target="_blank">Urbe Charme Scipioni</a></div>
+        <div class="card-meta">Prati &middot; 3BR / 3BA &middot; 6 guests &middot; <span class="stars">&#9733; 5.0</span> (14 reviews) &middot; Superhost</div>
+        <div class="card-desc">Each bedroom has its own en-suite bathroom &mdash; king beds, AC, blackout shutters, modern finishes. Fully equipped kitchen, washer, smart TVs. Upper floor with elevator. Midweek cleaning included. Host Giuseppe stops by with wine.</div>
+        <div class="card-details">
+          <span class="detail-pill">3 en-suite bathrooms</span>
+          <span class="detail-pill">AC</span>
+          <span class="detail-pill">Kitchen</span>
+          <span class="detail-pill">Elevator</span>
+          <span class="detail-pill">Blackout shutters</span>
+        </div>
+        <div class="card-price">~$820/night (~$3,280 for 4 nights)</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80" alt="Luxury interior design" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-design">Most Beautiful</span>
+        <div class="card-type">Airbnb</div>
+        <div class="card-title"><a href="https://www.airbnb.com/rooms/1637685525481737870" target="_blank">SJR Luxury Design N9</a></div>
+        <div class="card-meta">Via Tacito, Prati &middot; 3BR / 3BA &middot; 6 guests &middot; <span class="stars">&#9733; 5.0</span> (1 review) &middot; New listing</div>
+        <div class="card-desc">Navy wood paneling, floral accent walls, freestanding soaking tub, velvet furniture, Italian herringbone parquet. Balcony off the kitchen for morning espresso. High-end renovation. Risk: only 1 review, but host has 143 reviews across properties at 4.8.</div>
+        <div class="card-details">
+          <span class="detail-pill">3 en-suite bathrooms</span>
+          <span class="detail-pill">Balcony</span>
+          <span class="detail-pill">AC</span>
+          <span class="detail-pill">Soaking tub</span>
+          <span class="detail-pill">Herringbone parquet</span>
+        </div>
+        <div class="card-price">~$1,240/night (~$4,960 for 4 nights)</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80" alt="Warm apartment with plants" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-value">Best Value</span>
+        <div class="card-type">Airbnb</div>
+        <div class="card-title"><a href="https://www.airbnb.com/rooms/1386103519169412476" target="_blank">Davita &mdash; Casa Leda</a></div>
+        <div class="card-meta">Prati &middot; 3BR / 2BA &middot; 7 guests &middot; <span class="stars">&#9733; 4.94</span> (49 reviews) &middot; Superhost</div>
+        <div class="card-desc">150 sqm. Warm Scandi-Mediterranean design &mdash; rattan, natural wood, tons of plants. Deepest track record. Crib available. Caveat: only 2 bathrooms and no sofa/living room per one reviewer. But the space, location, and host are excellent.</div>
+        <div class="card-details">
+          <span class="detail-pill">150 sqm</span>
+          <span class="detail-pill">Crib available</span>
+          <span class="detail-pill">AC</span>
+          <span class="detail-pill">Kitchen</span>
+          <span class="detail-pill">2 bathrooms</span>
+        </div>
+        <div class="card-price">~$530/night (~$2,120 for 4 nights)</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="Luxury hotel garden" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-hotel">Hotel</span>
+        <div class="card-type">Hotel &middot; Amex FHR</div>
+        <div class="card-title"><a href="https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-russie/" target="_blank">Hotel de Russie</a></div>
+        <div class="card-meta">Rocco Forte &middot; Piazza del Popolo &middot; <a href="https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-russie/accommodation/two-bedroom-family-suite-garden-view/" target="_blank">Family Suite</a> + Deluxe Room</div>
+        <div class="card-desc">Two-bedroom Family Suite Garden View (100 sqm) + Deluxe Room for Lynda. The Secret Garden courtyard is extraordinary. Villa Borghese directly behind. Just completed major renovation April 2026.</div>
+        <div class="card-details">
+          <span class="detail-pill">Amex FHR</span>
+          <span class="detail-pill">Family Suite</span>
+          <span class="detail-pill">Secret Garden</span>
+        </div>
+        <div class="card-price">$1,800&ndash;2,500/night (both rooms)</div>
+        <div class="card-links">
+          <a href="https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-russie/accommodation/" target="_blank">View Rooms</a>
+          <a href="https://www.americanexpress.com/en-us/travel/discover/property/Italy/Rome/hotel-de-russie-a-rocco-forte-hotel" target="_blank">Amex FHR</a>
+          <a href="https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-russie/offers/family-experience/" target="_blank">Family Package</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80" alt="Hotel pool and garden" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-hotel">Hotel</span>
+        <div class="card-type">Hotel &middot; Amex FHR</div>
+        <div class="card-title"><a href="https://www.melia.com/en/hotels/italy/rome/villa-agrippina-gran-melia" target="_blank">Villa Agrippina Gran Melia</a></div>
+        <div class="card-meta">Gianicolo Hill &middot; Between Trastevere + Vatican</div>
+        <div class="card-desc">Urban resort. Two pools, spa, Mediterranean gardens. FHR perks: daily breakfast x2, room upgrade, $100+ credit, 4pm late checkout. Family suites, baby cots, bottle warmers, kids' cooking classes.</div>
+        <div class="card-details">
+          <span class="detail-pill">Amex FHR</span>
+          <span class="detail-pill">2 Pools</span>
+          <span class="detail-pill">Spa</span>
+          <span class="detail-pill">Baby amenities</span>
+        </div>
+        <div class="card-price">$800&ndash;1,400/night (both rooms)</div>
+        <div class="card-links">
+          <a href="https://www.americanexpress.com/en-us/travel/discover/property/Italy/Rome/Villa-Agrippina-A-Gran-Melia-Hotel-Rome" target="_blank">Amex FHR</a>
+          <a href="https://www.tripadvisor.com/Hotel_Review-g187791-d2163417-Reviews-Villa_Agrippina_Gran_Melia-Rome_Lazio.html" target="_blank">TripAdvisor</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" alt="Prati apartment balcony" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-value">Family Tested</span>
+        <div class="card-type">Airbnb &middot; Different Neighborhood</div>
+        <div class="card-title"><a href="https://www.airbnb.com/rooms/949922094408156280" target="_blank">Prati 3BR Urban Charm</a></div>
+        <div class="card-meta">Prati &middot; 3BR / 3BA &middot; 6 guests &middot; <span class="stars">&#9733; 4.8</span> (44 reviews) &middot; Superhost</div>
+        <div class="card-desc">700 meters from Piazza del Popolo. Each bedroom has a balcony wrapping around the building. Crib + high chair always available. Washer/dryer, smart TVs, Nespresso. Semi-basement (a bit dark per reviews but very spacious). Multiple families with kids rate it highly.</div>
+        <div class="card-details">
+          <span class="detail-pill">3 en-suite bathrooms</span>
+          <span class="detail-pill">Balconies</span>
+          <span class="detail-pill">Crib + high chair</span>
+          <span class="detail-pill">Washer/dryer</span>
+          <span class="detail-pill">AC</span>
+        </div>
+        <div class="card-price">~$900/night (~$3,600 for 4 nights)</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=400&q=80" alt="Trastevere cobblestone street" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-design">Guest Favorite</span>
+        <div class="card-type">Airbnb &middot; Trastevere</div>
+        <div class="card-title"><a href="https://www.airbnb.com/rooms/37832975" target="_blank">Trastevere 3 Bedrooms</a></div>
+        <div class="card-meta">Heart of Trastevere &middot; 3BR / 2BA &middot; 6 guests &middot; <span class="stars">&#9733; 4.93</span> (191 reviews) &middot; Superhost 10 yrs</div>
+        <div class="card-desc">Airbnb Guest Favorite. Elevator, wooden beam ceilings, AC, crib + high chair. Walk out the door to Da Enzo, Tonnarello, and the best dinner streets in Rome. Reviews rave about the location (5.0 stars). Caveat: no dedicated living room &mdash; just kitchen/dining + bedrooms. Can be noisy at night from Trastevere nightlife.</div>
+        <div class="card-details">
+          <span class="detail-pill">Guest Favorite badge</span>
+          <span class="detail-pill">Elevator</span>
+          <span class="detail-pill">Crib + high chair</span>
+          <span class="detail-pill">AC</span>
+          <span class="detail-pill">Beam ceilings</span>
+        </div>
+        <div class="card-price">~$700&ndash;900/night (~$2,800&ndash;3,600 for 4 nights)</div>
+      </div>
+    </div>
   </div>
-  <div class="route-arrow">→</div>
-  <div class="route-stop valdorcia">
-    <div class="city">Val d'Orcia</div>
-    <div class="nights">2 nights</div>
+
+  <div class="advisor-note">Urbe Charme Scipioni is still my top pick &mdash; three en-suite bathrooms, 5.0 rating, Superhost, blackout shutters for Logan. But two new options: <strong>Prati 3BR Urban Charm</strong> is a tested family pick (crib + high chair built in, 3 bathrooms, balconies) at a similar price point. <strong>Trastevere 3 Bedrooms</strong> puts you in the dinner action &mdash; 191 reviews, Guest Favorite &mdash; but only 2 bathrooms and no living room. Depends whether you want a home base (Prati) or a neighborhood experience (Trastevere).</div>
+
+  <div class="section-label">Day by Day</div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 1 &mdash; Sun, Oct 4: Jet Lag Recovery <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1517957754642-2870518e16f8?w=320&q=80" alt="Rome morning cafe" data-fallback>
+      <img src="https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?w=320&q=80" alt="Orange Garden view" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning</div><p>Sleep in. No alarm. You just crossed the Atlantic with a 6-month-old and a 4-year-old &mdash; you've earned this. When you surface, walk to the nearest bar for cornetti and cappuccini. Let Levi run. Let Logan stare at pigeons. Let the grandmas decompress.</p></div>
+    <div class="time-block"><div class="time-label">Midday</div><p>Groceries and supplies. Hit a Conad or Carrefour Express for water, snacks, diapers, wine. Stock the apartment kitchen. Lunch wherever looks good &mdash; no plans, no reservations, no agenda. A pizza al taglio spot or any trattoria with outdoor seating.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon &middot; 2&ndash;5pm</div><p>Nap rotation. Someone sleeps while someone else takes the kids for a slow walk. The neighborhood is the activity today. Find the nearest gelateria, the best coffee bar, the piazza where Levi can run in circles.</p></div>
+    <div class="time-block"><div class="time-label">Evening &middot; 7pm</div><p>Easy first dinner. <a href="https://tonnarello.it/en/homepage-2/" target="_blank">Tonnarello</a> in Trastevere &mdash; outdoor tables, massive portions, kid-friendly, no reservations needed. Or order in and eat at the apartment. Zero pressure. Tomorrow is when Rome begins.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 2 &mdash; Mon, Oct 5: Colosseum + The Rome You Haven't Seen <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=320&q=80" alt="Colosseum interior" data-fallback>
+      <img src="https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?w=320&q=80" alt="Aventine Hill Orange Garden" data-fallback>
+      <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=320&q=80" alt="Trastevere at night" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning &middot; 9am</div><p><a href="https://www.coopculture.it/en/colosseum-background.cfm" target="_blank">Colosseum</a> + Roman Forum. Skip-the-line tickets. Logan in carrier, Levi goes gladiator-mode. Quick Forum loop &mdash; Arch of Titus, Temple of Saturn, Senate House. <strong>New:</strong> book the <a href="https://www.coopculture.it/en/events/colosseum-underground-and-arena/" target="_blank">Underground + Arena Floor</a> tour &mdash; Levi walks where gladiators actually stood.</p></div>
+    <div class="time-block"><div class="time-label">Midday &middot; 12:30pm</div><p>Lunch in Monti. <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d1065498-Reviews-Ai_Tre_Scalini-Rome_Lazio.html" target="_blank">Ai Tre Scalini</a> on Via Panisperna &mdash; classic trattoria, outdoor seating, kid-friendly. Alt: <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d697498-Reviews-La_Carbonara-Rome_Lazio.html" target="_blank">La Carbonara</a> at Campo de' Fiori.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon &middot; 2&ndash;4pm</div><p>Back for Logan's nap + everyone's reset. Non-negotiable day-one energy management.</p></div>
+    <div class="time-block"><div class="time-label">Late Afternoon &middot; 5pm</div><p><a href="https://www.tripadvisor.com/Attraction_Review-g187791-d190134-Reviews-Giardino_degli_Aranci-Rome_Lazio.html" target="_blank">Aventine Hill</a> &mdash; the Rome most tourists skip. Start at <a href="https://en.wikipedia.org/wiki/Garden_of_Oranges" target="_blank">Giardino degli Aranci</a> (Orange Garden) for the best sunset panorama of the city &mdash; St. Peter's framed by umbrella pines. Then walk 2 min to the <a href="https://www.tripadvisor.com/Attraction_Review-g187791-d195725-Reviews-Knights_of_Malta_Keyhole-Rome_Lazio.html" target="_blank">Knights of Malta Keyhole</a> &mdash; peek through the keyhole in the green door and see St. Peter's dome perfectly framed by a hedge tunnel. Levi will lose his mind. Gelato at <a href="https://www.gelateriafatamorgana.com/web/index.php?ll=us" target="_blank">Fatamorgana</a> on the walk back.</p></div>
+    <div class="time-block"><div class="time-label">Evening &middot; 7:30pm</div><p>Trastevere. <a href="https://www.daenzoal29.com/" target="_blank">Da Enzo al 29</a> &mdash; cacio e pepe, carciofi alla giudia. No reservations, arrive 7pm. Backup: <a href="https://tonnarello.it/en/homepage-2/" target="_blank">Tonnarello</a> &mdash; outdoor tables, huge portions, kid-friendly.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 3 &mdash; Tue, Oct 6: Testaccio, Borghese &amp; Rooftop Aperitivo <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1567529692333-de9fd6772897?w=320&q=80" alt="Italian food market" data-fallback>
+      <img src="https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=320&q=80" alt="Villa Borghese park" data-fallback>
+      <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=320&q=80" alt="Rome rooftop view" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning &middot; 9:30am</div><p><a href="https://www.tripadvisor.com/Attraction_Review-g187791-d3398627-Reviews-Mercato_Testaccio-Rome_Lazio.html" target="_blank">Testaccio Market</a> &mdash; Rome's real food neighborhood, zero tourists. Sample suppli (fried rice balls), trapizzino (pizza pockets stuffed with Roman stews), fresh pasta, seasonal produce. Levi can point and eat. Walk past the <a href="https://en.wikipedia.org/wiki/Pyramid_of_Cestius" target="_blank">Pyramid of Cestius</a> &mdash; yes, Rome has a legit Egyptian pyramid. Levi content.</p></div>
+    <div class="time-block"><div class="time-label">Midday &middot; 12pm</div><p>Lunch at <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d2450407-Reviews-Flavio_al_Velavevodetto-Rome_Lazio.html" target="_blank">Flavio al Velavevodetto</a> &mdash; built into ancient Monte Testaccio (a hill of Roman pottery shards). Their carbonara and amatriciana are top-three-in-the-city good. Or <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d12854004-Reviews-Trapizzino_Testaccio-Rome_Lazio.html" target="_blank">Trapizzino</a> for something faster with kids.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon &middot; 2pm</div><p><a href="https://www.tripadvisor.com/Attraction_Review-g187791-d243392-Reviews-Villa_Borghese-Rome_Lazio.html" target="_blank">Villa Borghese</a> park. Family rickshaw bike, lake, Pincio Terrace panorama. <strong>Highly recommend:</strong> <a href="https://galleriaborghese.beniculturali.it/en/" target="_blank">Borghese Gallery</a> (book months ahead) &mdash; small, intimate, no crowds. Grandmas take kids in park while you and Lindsey see Bernini's sculptures up close. 2-hour timed entry keeps it civilized.</p></div>
+    <div class="time-block"><div class="time-label">Late Afternoon</div><p>Explore <a href="https://www.tripadvisor.com/Attraction_Review-g187791-d8734607-Reviews-Via_Margutta-Rome_Lazio.html" target="_blank">Via Margutta</a> &mdash; the artists' street where Audrey Hepburn lived in Roman Holiday. Tiny galleries, ivy-covered walls, quiet. Then stroll through <a href="https://en.wikipedia.org/wiki/Piazza_del_Popolo" target="_blank">Piazza del Popolo</a> and duck into <a href="https://en.wikipedia.org/wiki/Santa_Maria_del_Popolo" target="_blank">Santa Maria del Popolo</a> to see two Caravaggios for free in a side chapel &mdash; better than fighting museum crowds.</p></div>
+    <div class="time-block"><div class="time-label">Evening &middot; 7pm</div><p>Aperitivo at <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d23462192-Reviews-Terrazza_Borromini-Rome_Lazio.html" target="_blank">Terrazza Borromini</a> rooftop overlooking Piazza Navona &mdash; or Hotel Raphael rooftop same area. Dinner at <a href="https://salumeriaroscioli.com/en/" target="_blank">Roscioli</a> &mdash; <a href="https://salumeriaroscioli.com/en/pages/prenota" target="_blank">reserve ahead</a>. The carbonara is perfect.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 4 &mdash; Wed, Oct 7: Morning Rome &rarr; Train to Lucca <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1587614382231-d1590f0039e7?w=320&q=80" alt="Pantheon" data-fallback>
+      <img src="https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=320&q=80" alt="Italian train" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning &middot; 9am</div><p><a href="https://www.tripadvisor.com/Attraction_Review-g187791-d197714-Reviews-Pantheon-Rome_Lazio.html" target="_blank">Pantheon</a> (free, 20 min). <a href="https://en.wikipedia.org/wiki/Piazza_Navona" target="_blank">Piazza Navona</a>. Coffee at <a href="https://www.santeustachioilcaffe.it/en/" target="_blank">Sant'Eustachio</a>. Jewish Ghetto &mdash; carciofi at <a href="https://www.nonnabetta.it/en/" target="_blank">Nonna Betta</a>.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon &middot; 1pm</div><p>Train to Lucca via <a href="https://www.trenitalia.com/en.html" target="_blank">Trenitalia</a> (Frecciarossa Prima class to Florence, regional to Lucca). Or private car service (~&euro;400&ndash;500, zero logistics with baby).</p></div>
+    <div class="time-block"><div class="time-label">Evening &middot; 5pm</div><p>Arrive Lucca. Pick up rental car. Check into villa. Groceries at Esselunga/Conad. Easy dinner at villa or <a href="https://www.bucadisantantonio.com/en/" target="_blank">Buca di Sant'Antonio</a>.</p></div>
+  </div></div>
+</div>
+
+<!-- ============ LUCCA ============ -->
+<div class="section-hero">
+  <img class="section-hero-img" src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?w=1200&q=80" alt="Lucca medieval walls and towers" data-fallback>
+</div>
+<div class="leg-section lucca-section has-hero">
+  <div class="leg-header">
+    <div class="leg-badge">&#127809;</div>
+    <div>
+      <h2>Lucca &amp; Wedding</h2>
+    </div>
+    <div class="leg-dates">Oct 7-11 &middot; 4 Nights</div>
+  </div>
+
+  <div class="section-label">Where to Stay</div>
+
+  <div class="accom-grid">
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&q=80" alt="Tuscan villa with pool" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-value">Backup</span>
+        <div class="card-type">Villa Rental</div>
+        <div class="card-title"><a href="https://www.posarellivillas.com/italy/tuscany/segromigno-in-monte/95512" target="_blank">Villa Fiamma</a></div>
+        <div class="card-meta">Segromigno in Monte &middot; 5BR &middot; Sleeps 10 &middot; Minutes from wedding venue</div>
+        <div class="card-desc">19th-century villa with private pool, AC, 4,800 sqm grounds. Right in the same hamlet as the wedding venue. 5% discount for bookings through Oct 10.</div>
+        <div class="card-details">
+          <span class="detail-pill">5 bedrooms</span>
+          <span class="detail-pill">Pool</span>
+          <span class="detail-pill">AC</span>
+          <span class="detail-pill">Near venue</span>
+          <span class="detail-pill">5% discount</span>
+        </div>
+        <div class="card-price">~$400&ndash;600/night</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&q=80" alt="Grand estate villa" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-value">Backup</span>
+        <div class="card-type">Villa Rental</div>
+        <div class="card-title"><a href="https://www.villabuonvisi.com/" target="_blank">Villa Buonvisi</a></div>
+        <div class="card-meta">Segromigno in Monte &middot; 8BR &middot; Sleeps 16 &middot; Pool + Tennis</div>
+        <div class="card-desc">Historic 16th-century estate. 8 en-suite bedrooms, pool, tennis court, daily maid service, private chef available. More space than you need but gorgeous property.</div>
+        <div class="card-details">
+          <span class="detail-pill">8 en-suite bedrooms</span>
+          <span class="detail-pill">Pool</span>
+          <span class="detail-pill">Tennis</span>
+          <span class="detail-pill">Daily maid</span>
+          <span class="detail-pill">Chef available</span>
+        </div>
+        <div class="card-price">Contact for pricing</div>
+        <div class="card-links">
+          <a href="https://www.salogivillas.com/italy/tuscany/segromigno-in-monte/12/buonvisi-villa" target="_blank">Salogi Villas</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80" alt="Boutique hotel rooftop" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-hotel">Hotel</span>
+        <div class="card-type">Hotel &middot; Marriott Autograph</div>
+        <div class="card-title"><a href="https://www.granduniverselucca.com/" target="_blank">Grand Universe Lucca</a></div>
+        <div class="card-meta">Inside Lucca's walls &middot; 16th-century palazzo &middot; Rooftop bar</div>
+        <div class="card-desc">Rooftop bar Sommita with panoramic views. 15&ndash;20 min drive to venue. Good fallback if villa search comes up short.</div>
+        <div class="card-price">$300&ndash;600/night per room</div>
+        <div class="card-links">
+          <a href="https://www.marriott.com/en-us/hotels/psaak-grand-universe-lucca-autograph-collection/overview/" target="_blank">Marriott</a>
+          <a href="https://www.tripadvisor.com/Hotel_Review-g187898-d13451242-Reviews-Grand_Universe_Lucca_Autograph_Collection-Lucca_Province_of_Lucca_Tuscany.html" target="_blank">TripAdvisor</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accom-card recommended">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Tuscan farmhouse estate" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-pick">Top Pick</span>
+        <div class="card-type">VRBO &middot; Walking Distance to Venue</div>
+        <div class="card-title"><a href="https://www.vrbo.com/11144625ha" target="_blank">Casa Maria</a></div>
+        <div class="card-meta">Segromigno in Monte &middot; 5BR / 5BA &middot; Sleeps 10 &middot; Estate property</div>
+        <div class="card-desc">Renovated 19th-century farmhouse with all modern comforts. Every bedroom has its own en-suite bathroom + AC. Modern kitchen overlooking the garden with covered patio for outdoor dining. Set in an ancient garden with private pool, large lawn, shared tennis court. Dinner available on request (Tuscan home cooking). Walking distance to Casale de' Pasquinelli. Part of a larger estate &mdash; enough space to spread out.</div>
+        <div class="card-details">
+          <span class="detail-pill">5 en-suite bathrooms</span>
+          <span class="detail-pill">Private pool</span>
+          <span class="detail-pill">AC</span>
+          <span class="detail-pill">Kitchen + patio</span>
+          <span class="detail-pill">Tennis court</span>
+          <span class="detail-pill">Fireplace</span>
+          <span class="detail-pill">Washer/dryer</span>
+          <span class="detail-pill">Parking</span>
+          <span class="detail-pill">Walking distance to venue</span>
+        </div>
+        <div class="card-price"><a href="https://www.vrbo.com/11144625ha" target="_blank" style="color:var(--accent)">Check availability on VRBO</a></div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=400&q=80" alt="Tuscan farmhouse estate" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-hotel" style="background:#FFE0E0;color:#C62828;">Booked Up</span>
+        <div class="card-type">Venue Apartment &middot; Casale de' Pasquinelli</div>
+        <div class="card-title"><a href="https://www.casaledepasquinelli.it/orchidea.html" target="_blank">Orchidea at Casale de' Pasquinelli</a></div>
+        <div class="card-meta">Segromigno in Monte &middot; 4BR / 4BA &middot; 190 sqm &middot; <span style="color:#C62828;">Fully booked for wedding weekend</span></div>
+        <div class="card-desc">The venue apartments are all booked by other wedding guests. Was the dream scenario &mdash; steps from every event &mdash; but Casa Maria next door is the next best thing.</div>
+        <div class="card-details">
+          <span class="detail-pill" style="background:#FFE0E0;color:#C62828;">Unavailable</span>
+        </div>
+        <div class="card-price" style="color:#999;">N/A</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&q=80" alt="Tuscan villa with hot tub and garden" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-value">Nearby &middot; 1.4km / 4 min drive</span>
+        <div class="card-type">Villa Rental &middot; Lucca Apartments &amp; Villas</div>
+        <div class="card-title"><a href="https://www.luccaapartmentsandvillas.co.uk/rentals/villa-segromigno-in-monte-villa-dana-320854.html" target="_blank">Villa Dana</a></div>
+        <div class="card-meta">Via di Valgiano, Segromigno in Monte &middot; 4BR / 5BA &middot; 8 guests &middot; 200 sqm</div>
+        <div class="card-desc">Ground-floor villa with 4 double bedrooms, each with ensuite bath. Private pool (5m &#215; 10m &mdash; <strong>closes end of Sept</strong>), but hot tub/jacuzzi stays open year-round. Wood-fired pizza oven, BBQ gazebo, A/C throughout. 10/10 guest rating. 1.4 km walk or 4-min drive to the wedding venue. The hot tub alone makes this a standout for October when pools are closed.</div>
+        <div class="card-details">
+          <span class="detail-pill">4 ensuite bedrooms</span>
+          <span class="detail-pill">Hot tub / Spa</span>
+          <span class="detail-pill">Pizza oven</span>
+          <span class="detail-pill">A/C</span>
+          <span class="detail-pill">Free Wi-Fi</span>
+          <span class="detail-pill">Baby cot available</span>
+        </div>
+        <div class="card-price">~&euro;1,938/week (&euro;430 cleaning fee) &middot; <a href="https://ms.hotels.com/en/ho2652924288/villa-dana-4-bedrooms-4-bathrooms-retreat-villa-with-private-swimming-pool-and-spa-capannori-italy/" target="_blank" style="color:var(--accent)">Hotels.com</a></div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80" alt="Stone farmhouse in olive grove" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-value">Nearby &middot; 2km</span>
+        <div class="card-type">Villa Rental &middot; Salogi Villas</div>
+        <div class="card-title"><a href="https://www.salogivillas.com/italy/tuscany/segromigno-in-monte/20/casa-tonio-villa" target="_blank">Casa Tonio</a></div>
+        <div class="card-meta">2 km from Segromigno &middot; 3BR / 2BA &middot; 6 guests &middot; Superhost owners next door</div>
+        <div class="card-desc">17th-century stone farmhouse in olive grove. Large pool (12m x 6m) among olive trees. AC in all bedrooms, wifi, baby cot + high chair on request. Friendly owners live next door and speak multiple languages. 11 km to Lucca. <strong>Note:</strong> pool closes Sept 30 (before your dates), and 7-night minimum may apply &mdash; contact to negotiate for 4 nights.</div>
+        <div class="card-details">
+          <span class="detail-pill">3 bedrooms</span>
+          <span class="detail-pill">Pool (closes Sept 30)</span>
+          <span class="detail-pill">AC</span>
+          <span class="detail-pill">Baby cot</span>
+          <span class="detail-pill">BBQ</span>
+        </div>
+        <div class="card-price">~&euro;285/night (~&euro;1,990/week)</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&q=80" alt="Design hotel room" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-hotel">Hotel</span>
+        <div class="card-type">Hotel &middot; Marriott Autograph</div>
+        <div class="card-title"><a href="https://www.granduniverselucca.com/" target="_blank">Grand Universe Lucca</a></div>
+        <div class="card-meta">Inside Lucca's walls &middot; 16th-century palazzo &middot; Rooftop bar</div>
+        <div class="card-desc">Rooftop bar Sommita with panoramic views. 15&ndash;20 min drive to venue. Good fallback if villa search comes up short.</div>
+        <div class="card-price">$300&ndash;600/night per room</div>
+        <div class="card-links">
+          <a href="https://www.marriott.com/en-us/hotels/psaak-grand-universe-lucca-autograph-collection/overview/" target="_blank">Marriott</a>
+          <a href="https://www.tripadvisor.com/Hotel_Review-g187898-d13451242-Reviews-Grand_Universe_Lucca_Autograph_Collection-Lucca_Province_of_Lucca_Tuscany.html" target="_blank">TripAdvisor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="advisor-note"><strong>Update:</strong> Venue apartments are all booked by other wedding guests. <strong>Casa Maria</strong> (VRBO) is the new top pick &mdash; walking distance to the venue, 5 en-suite bedrooms, private pool, AC, covered patio. Part of a larger estate in Segromigno in Monte. You'd walk to every wedding event and walk home after. <strong>Villa Fiamma</strong> (~500m from venue) is the backup if Casa Maria doesn't work out. <strong>Pool warning:</strong> most Tuscan pools close Oct 1 &mdash; confirm with Casa Maria whether their pool is still open for your Oct 7&ndash;11 dates.</div>
+
+  <div style="margin-bottom:20px;">
+    <div class="section-label">More Search Links</div>
+    <div class="card-links" style="margin-top:8px;">
+      <a href="https://www.airbnb.com/s/Segromigno-in-Monte--Capannori--Province-of-Lucca--Italy/homes?adults=6&children=1&infants=1&checkin=2026-10-07&checkout=2026-10-11&min_bedrooms=3" target="_blank">Airbnb: Segromigno 3BR+ (your dates)</a>
+      <a href="https://www.vrbo.com/11144625ha" target="_blank">VRBO: Segromigno 5BR</a>
+      <a href="https://www.tuscany-villas.it/villas-with-pool_segromigno-in-monte_tuscany.html" target="_blank">Tuscany Villas: Segromigno</a>
+      <a href="https://www.posarellivillas.com/italy/tuscany/segromigno-in-monte" target="_blank">Posarelli: Segromigno</a>
+      <a href="https://www.salogivillas.com/italy/tuscany/segromigno-in-monte" target="_blank">Salogi: Segromigno</a>
+      <a href="https://www.casaledepasquinelli.it/houses/" target="_blank">Casale de' Pasquinelli: All Apartments</a>
+    </div>
+  </div>
+
+  <div class="section-label">Day by Day</div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 5 &mdash; Thu, Oct 8: Explore Lucca + Rehearsal Dinner <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?w=320&q=80" alt="Lucca walls cycling in autumn" data-fallback>
+      <img src="https://images.unsplash.com/photo-1498579150354-977475b7ea0b?w=320&q=80" alt="Italian piazza" data-fallback>
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=320&q=80" alt="Italian trattoria" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning &middot; 9am</div><p>Drive into Lucca. Rent bikes on <a href="https://www.tripadvisor.com/Attraction_Review-g187898-d246627-Reviews-Le_Mura_di_Lucca-Lucca_Province_of_Lucca_Tuscany.html" target="_blank">Lucca's Renaissance walls</a> &mdash; 4km flat tree-lined path, baby seats available. Signature Lucca experience. <a href="https://en.wikipedia.org/wiki/Piazza_dell%27Anfiteatro" target="_blank">Piazza dell'Anfiteatro</a>, Via Fillungo, buccellato at <a href="https://www.tripadvisor.com/Restaurant_Review-g187898-d1059485-Reviews-Taddeucci-Lucca_Province_of_Lucca_Tuscany.html" target="_blank">Taddeucci</a>.</p></div>
+    <div class="time-block"><div class="time-label">Midday &middot; 12:30pm</div><p>Lunch at <a href="https://www.trattoriadaleo.it/" target="_blank">Trattoria da Leo</a> &mdash; bustling local favorite. Or <a href="https://www.bucadisantantonio.com/en/" target="_blank">Buca di Sant'Antonio</a> (since 1782). Tordelli lucchesi, zuppa di farro.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon &middot; 3pm</div><p>Back to villa. Rest and get ready. Dress code: <strong>Garden Attire</strong> (sundresses, floral prints, lighter-hue suits).</p></div>
+    <div class="time-block"><div class="time-label">Kids Logistics</div><p>Children not invited. Cindy + Lynda have kids at villa. Stock up: dinner for grandmas + kids, bottles/food for Logan, entertainment for Levi. Villa is walking distance from venue.</p></div>
+    <div class="time-block"><div class="time-label">Evening &middot; 6&ndash;10pm</div><p>Rehearsal dinner pizza party at <a href="https://www.zola.com/wedding/altmancollinswedding" target="_blank">Casale de' Pasquinelli</a>.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 6 &mdash; Fri, Oct 9: The Wedding <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="time-block"><div class="time-label">Morning</div><p>Long morning at villa &mdash; breakfast, pool, family time. Ceremony at 3:30pm.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon &middot; 2:30pm</div><p>Get ready. Dress code: <strong>Semi-Formal</strong> (suits/cocktail, tuxes/gowns welcome). Feed Logan. Instructions for grandmas. Make sure they have car keys.</p></div>
+    <div class="time-block"><div class="time-label">3:30pm &ndash; 1:00am</div><p>Wedding ceremony + reception. Venue is minutes from villa. Grandma plan: dinner at villa, kids to bed at normal time, Levi watches a movie.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 7 &mdash; Sat, Oct 10: Pool Brunch + Wedding Recovery <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=320&q=80" alt="Tuscan countryside morning" data-fallback>
+      <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=320&q=80" alt="Italian gelato" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning &middot; 10:30am&ndash;1:30pm</div><p>Pool party + brunch at venue. Dress code: <strong>Beach Attire</strong> (linen, swimsuits, sandals). Grandmas have kids.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon</div><p>Recovery mode. You were up until 1am at a Tuscan wedding &mdash; nobody needs to be in a car right now. Naps, villa time, Levi in the garden. Drive into Lucca for a slow afternoon stroll if energy permits &mdash; <a href="https://www.tripadvisor.com/Attraction_Review-g187898-d195030-Reviews-Torre_Guinigi-Lucca_Province_of_Lucca_Tuscany.html" target="_blank">Torre Guinigi</a> (230 steps, oak trees on top) is the Adam + Levi adventure.</p></div>
+    <div class="time-block"><div class="time-label">Evening &middot; 7:30pm</div><p>Last Lucca dinner. <a href="https://www.tripadvisor.com/Restaurant_Review-g187898-d1076050-Reviews-Gli_Orti_di_Via_Elisa-Lucca_Province_of_Lucca_Tuscany.html" target="_blank">Gli Orti di Via Elisa</a> &mdash; garden setting, perfect October evening. Pack tonight for tomorrow's drive south.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 8 &mdash; Sun, Oct 11: Lucca &rarr; Val d'Orcia <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=320&q=80" alt="Tuscan countryside drive" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning</div><p>Last coffee at the villa. Load the car. Say goodbye to the Lucchese hills.</p></div>
+    <div class="time-block"><div class="time-label">Late Morning &middot; 10am</div><p>Drive to Val d'Orcia (~2&ndash;2.5 hrs). Route through <a href="https://www.tripadvisor.com/Tourism-g187902-Siena_Tuscany-Vacations.html" target="_blank">Siena</a> &mdash; gelato in the Campo if timing works. Lunch in Siena or push through to the farmhouse.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon</div><p>Check into Val d'Orcia farmhouse. Settle in, groceries, explore the property. Let the landscape hit you.</p></div>
+    <div class="time-block"><div class="time-label">Evening</div><p>Dinner on-site or nearby trattoria. First Brunello of the leg.</p></div>
+  </div></div>
+</div>
+
+<!-- ============ VAL D'ORCIA ============ -->
+<div class="section-hero">
+  <img class="section-hero-img" src="https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?w=1200&q=80" alt="Val d'Orcia cypress roads rolling hills" data-fallback>
+</div>
+<div class="leg-section valdorcia-section has-hero">
+  <div class="leg-header">
+    <div class="leg-badge">&#127863;</div>
+    <div>
+      <h2>Val d'Orcia</h2>
+    </div>
+    <div class="leg-dates">Oct 11-14 &middot; 3 Nights</div>
+  </div>
+
+  <div class="section-label">Where to Stay</div>
+
+  <div class="accom-grid">
+    <div class="accom-card recommended">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=400&q=80" alt="Stone farmhouse with pool in Tuscany" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-pick">Lindsey's Vibe</span>
+        <div class="card-type">Villa / Farmhouse Search</div>
+        <div class="card-title">Rustic Tuscan Farmhouse with Pool</div>
+        <div class="card-meta">Montalcino / Pienza area &middot; 4&ndash;5BR &middot; Stone construction + pool</div>
+        <div class="card-desc">Converted stone farmhouses with exposed beams, terracotta floors, cypress-lined driveways, infinity pools overlooking the Val d'Orcia. This area invented that aesthetic. Filter for 4&ndash;5 bedrooms, pool, fireplace, updated kitchen.</div>
+        <div class="card-price">$400&ndash;1,000/night</div>
+        <div class="card-links">
+          <a href="https://www.airbnb.com/montalcino-italy/stays/villas" target="_blank">Airbnb: Montalcino</a>
+          <a href="https://www.vrbo.com/vacation-rentals/italy/pienza-si/val-dorcia" target="_blank">VRBO: Val d'Orcia</a>
+          <a href="https://www.posarellivillas.com/villa-rentals-in_val-dorcia_italy.html" target="_blank">Posarelli</a>
+          <a href="https://www.homeinitaly.com/luxury-villas-by-destinations/val-d-orcia-area_37" target="_blank">Home in Italy</a>
+          <a href="https://www.rentalescapes.com/rentals/luxury-vacation-rentals-europe/italy/tuscany/val-dorcia" target="_blank">Rental Escapes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=400&q=80" alt="Vineyard estate" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-design">Winery Villa</span>
+        <div class="card-type">Villa Rental</div>
+        <div class="card-title"><a href="https://villas.mastrojanni.com/" target="_blank">Villa Poderino at Mastrojanni</a></div>
+        <div class="card-meta">Montalcino &middot; 4BR &middot; On Brunello winery grounds</div>
+        <div class="card-desc">Luxury villa on Mastrojanni winery estate (legendary Brunello producer). Private pool, jacuzzi, breakfast included. Designed by artist Vittorio Corsini. Sleep in the vineyard.</div>
+        <div class="card-details">
+          <span class="detail-pill">4 bedrooms</span>
+          <span class="detail-pill">Pool + Jacuzzi</span>
+          <span class="detail-pill">Breakfast included</span>
+          <span class="detail-pill">Winery access</span>
+        </div>
+        <div class="card-price">~$800&ndash;1,500/night</div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80" alt="Luxury resort pool at sunset" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-splurge">Once-in-a-Lifetime</span>
+        <div class="card-type">Hotel</div>
+        <div class="card-title"><a href="https://www.rosewoodhotels.com/en/castiglion-del-bosco" target="_blank">Rosewood Castiglion del Bosco</a></div>
+        <div class="card-meta">Montalcino &middot; 5,000-acre estate &middot; UNESCO landscape</div>
+        <div class="card-desc">Restored medieval borgo with own Brunello vineyard. 42 suites + 11 private villas. Pool, spa, cooking classes, cantina, golf. Every window is a painting.</div>
+        <div class="card-price">$2,000&ndash;3,500/night</div>
+        <div class="card-links">
+          <a href="https://www.castigliondelbosco.com/" target="_blank">Property Site</a>
+          <a href="https://www.tripadvisor.com/Hotel_Review-g635634-d1147343-Reviews-Rosewood_Castiglion_Del_Bosco-Montalcino_Tuscany.html" target="_blank">TripAdvisor</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="accom-card">
+      <img class="accom-thumb" src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=400&q=80" alt="Castle hotel with infinity pool" data-fallback>
+      <div class="accom-body">
+        <span class="card-badge badge-hotel">Hotel</span>
+        <div class="card-type">Hotel &middot; 5-Star &middot; Thermal Spa</div>
+        <div class="card-title"><a href="https://www.castellodivelona.it/" target="_blank">Castello di Velona</a></div>
+        <div class="card-meta">Montalcino hilltop &middot; 11th-century castle &middot; 360&deg; views</div>
+        <div class="card-desc">Only castle with thermal water. Pool, thermal spa, own winery, olive oil. Grandmas will love the spa. On-site restaurant = don't have to drive.</div>
+        <div class="card-price">$800&ndash;1,400/night (both rooms)</div>
+        <div class="card-links">
+          <a href="https://www.booking.com/hotel/it/castello-di-velona-resort-thermal-spa-winery.html" target="_blank">Booking.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="advisor-note">Given Lindsey's vibe: rustic farmhouse villa here. Stone walls, pool overlooking hills, October light, Brunello on the table. The Mastrojanni villa is exceptional if available. If hotel, Rosewood is once-in-a-lifetime; Castello di Velona excellent at half the price + thermal spa.</div>
+
+  <div class="section-label">Day by Day</div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 9 &mdash; Mon, Oct 12: Recovery Day <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=320&q=80" alt="Tuscan pool morning" data-fallback>
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=320&q=80" alt="Italian dinner" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">All Day</div><p>Sleep in. Pool. Read. Don't drive anywhere. Book the grandmas a spa treatment at <a href="https://www.castellodivelona.it/" target="_blank">Castello di Velona</a> (accepts outside guests) &mdash; thank-you for wedding kid duty.</p></div>
+    <div class="time-block"><div class="time-label">Evening</div><p>Dinner at villa or <a href="https://www.tripadvisor.com/Restaurant_Review-g635634-d2188771-Reviews-Osteria_Porta_Rivellini-Montalcino_Tuscany.html" target="_blank">Osteria di Porta Rivellini</a> in Montalcino. Brunello country &mdash; drink Brunello.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 10 &mdash; Tue, Oct 13: The Tuscan Drive <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=320&q=80" alt="Pienza cheese shop" data-fallback>
+      <img src="https://images.unsplash.com/photo-1474722883778-792e7990302f?w=320&q=80" alt="Tuscan hilltop town" data-fallback>
+      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=320&q=80" alt="Wine tasting" data-fallback>
+      <img src="https://images.unsplash.com/photo-1464979681340-bdd28a61699e?w=320&q=80" alt="Cypress road Val d'Orcia" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Stop 1 &middot; Pienza</div><p><a href="https://www.tripadvisor.com/Tourism-g194847-Pienza_Tuscany-Vacations.html" target="_blank">Pienza</a> &mdash; the pecorino capital. Buy cheese everywhere. The view from the town walls = every Tuscany calendar. Family photo here.</p></div>
+    <div class="time-block"><div class="time-label">Stop 2 &middot; Montepulciano</div><p><a href="https://www.tripadvisor.com/Tourism-g194833-Montepulciano_Tuscany-Vacations.html" target="_blank">Montepulciano</a> &mdash; wine tasting at <a href="https://www.contucci.it/en/" target="_blank">Cantina Contucci</a> (making wine since 1008). Lunch at <a href="https://www.tripadvisor.com/Restaurant_Review-g194833-d806078-Reviews-Osteria_Acquacheta-Montepulciano_Tuscany.html" target="_blank">Osteria Acquacheta</a> &mdash; famous bistecca, shared tables. Reserve ahead.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon Drive</div><p>Back roads between Montepulciano and Montalcino. Famous cypress road near <a href="https://www.tripadvisor.com/Attraction_Review-g194847-d4752047-Reviews-Cappella_della_Madonna_di_Vitaleta-Pienza_Tuscany.html" target="_blank">Cappella della Madonna di Vitaleta</a>. Stop whenever the light does something.</p></div>
+    <div class="time-block"><div class="time-label">Stop 3 &middot; Montalcino</div><p><a href="https://www.tripadvisor.com/Attraction_Review-g635634-d246509-Reviews-Fortezza_di_Montalcino-Montalcino_Tuscany.html" target="_blank">Fortezza di Montalcino</a> wine bar &mdash; world's best Brunellos, &euro;10&ndash;15/glass.</p></div>
+    <div class="time-block"><div class="time-label">Evening &middot; Date Night</div><p>Grandmas take kids. Adam + Lindsey splurge at <a href="https://www.tripadvisor.com/Restaurant_Review-g635634-d1236834-Reviews-Ristorante_Poggio_Antico-Montalcino_Tuscany.html" target="_blank">Ristorante di Poggio Antico</a> &mdash; Michelin-recognized, wine estate views.</p></div>
+  </div></div>
+
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 11 &mdash; Wed, Oct 14: Last Morning &rarr; Fly Home <span class="toggle">&#9660;</span></div><div class="day-content">
+    <div class="day-highlights">
+      <img src="https://images.unsplash.com/photo-1501952476817-d7ae22e8ee4e?w=320&q=80" alt="Morning light Tuscany" data-fallback>
+    </div>
+    <div class="time-block"><div class="time-label">Morning</div><p>Last Italian breakfast. Pack slowly. One more walk. Take the photos you forgot.</p></div>
+    <div class="time-block"><div class="time-label">Late Morning</div><p>Drive to <a href="https://www.aeroporto.firenze.it/en/" target="_blank">Florence airport (FLR)</a> ~1.5&ndash;2 hrs or <a href="https://www.pisa-airport.com/en/" target="_blank">Pisa (PSA)</a> ~2&ndash;2.5 hrs. Drop rental car. Fly home.</p></div>
+  </div></div>
+</div>
+
+<!-- ============ LOGISTICS ============ -->
+<div class="logistics-section">
+  <h2>Logistics</h2>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>&#9992; Flights</h3>
+      <p style="margin-bottom:8px;"><strong>Open-jaw:</strong> Fly into Rome (FCO), home from Florence (FLR) or Pisa (PSA).</p>
+      <ul>
+        <li><a href="https://www.flyingblue.com/" target="_blank">Flying Blue</a> &mdash; 1:1 Amex transfer, instant. 50&ndash;70K biz one-way</li>
+        <li><a href="https://flywith.virginatlantic.com/" target="_blank">Virgin Atlantic</a> &mdash; Delta One ~50K off-peak</li>
+        <li><a href="https://www.aircanada.com/aeroplan/" target="_blank">Aeroplan</a> &mdash; 70K biz one-way, Star Alliance</li>
+        <li><a href="https://www.google.com/travel/flights" target="_blank">Google Flights</a> &mdash; cash comparison</li>
+      </ul>
+      <p style="margin-top:8px;font-size:0.82em;color:#888;">Business with a 6-month-old = flat seats = arriving functional. Centurion Lounge at ATL.</p>
+    </div>
+    <div class="info-card">
+      <h3>&#128663; Rental Car</h3>
+      <p><strong>Pick up:</strong> Lucca, Oct 7<br><strong>Drop off:</strong> FLR or PSA, Oct 14<br><strong>Duration:</strong> 7 days</p>
+      <ul>
+        <li>Automatic transmission, large SUV or minivan</li>
+        <li>2 car seats: booster (Levi) + rear-facing (Logan)</li>
+        <li>Full CDW + theft coverage (non-negotiable)</li>
+        <li>&euro;80&ndash;120/day = &euro;560&ndash;840/week</li>
+      </ul>
+      <p style="margin-top:8px;font-size:0.82em;color:#888;">Book 3&ndash;4 months ahead. Automatics are limited in Italy.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:30px;">Budget</h2>
+  <div style="background:white;border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;">
+    <table class="budget-table">
+      <tr><th>Category</th><th>Low</th><th>High</th><th class="notes">Notes</th></tr>
+      <tr><td>Flights (6 people)</td><td>$5,000</td><td>$12,000</td><td class="notes">Points vs cash, economy vs business</td></tr>
+      <tr><td>Rome (4 nights)</td><td>$2,120</td><td>$4,960</td><td class="notes">Apartment vs Hotel de Russie</td></tr>
+      <tr><td>Lucca villa (4 nights)</td><td>$1,200</td><td>$3,200</td><td class="notes">$300&ndash;800/night</td></tr>
+      <tr><td>Val d'Orcia (3 nights)</td><td>$1,200</td><td>$10,500</td><td class="notes">Farmhouse vs Rosewood</td></tr>
+      <tr><td>Rental car (7 days)</td><td>$560</td><td>$840</td><td class="notes">Automatic minivan/SUV</td></tr>
+      <tr><td>Meals</td><td>$2,500</td><td>$4,500</td><td class="notes">Splurge + casual + villa cooking</td></tr>
+      <tr><td>Activities / tours</td><td>$500</td><td>$1,200</td><td class="notes">Vatican, wine, galleries</td></tr>
+      <tr><td>Misc</td><td>$500</td><td>$1,500</td><td class="notes">Taxis, tips, shopping</td></tr>
+      <tr><td>Total</td><td>~$12,500</td><td>~$41,000</td><td class="notes">Points dramatically reduce flights</td></tr>
+    </table>
+  </div>
+
+  <h2 style="margin-top:30px;">Pre-Booking Checklist</h2>
+
+  <div class="checklist">
+    <h3>Now &mdash; April 2026 (6 months out)</h3>
+    <label><input type="checkbox"> <span>Passport check &mdash; all 6. Logan needs his own (apply now, 6&ndash;8 weeks)</span></label>
+    <label><input type="checkbox"> <span>Start searching flights &mdash; <a href="https://www.flyingblue.com/" target="_blank">Flying Blue promo awards</a> monthly</span></label>
+    <label><input type="checkbox"> <span>Book Rome apartment &mdash; <a href="https://www.airbnb.com/rooms/1579814480753707186" target="_blank">Urbe Charme</a> or preferred pick</span></label>
+    <label><input type="checkbox"> <span>Book Lucca villa &mdash; <a href="https://www.posarellivillas.com/italy/tuscany/segromigno-in-monte/95512" target="_blank">Villa Fiamma</a>, <a href="https://www.airbnb.com/lucca-italy/stays/villas" target="_blank">Airbnb</a>, <a href="https://www.vrbo.com/vacation-rentals/italy/tuscany/lucca-area/lucca" target="_blank">VRBO</a></span></label>
+    <label><input type="checkbox"> <span>Book Val d'Orcia farmhouse or hotel</span></label>
+  </div>
+
+  <div class="checklist">
+    <h3>June&ndash;July 2026 (3&ndash;4 months out)</h3>
+    <label><input type="checkbox"> <span>Book rental car (automatic, large, 2 car seats)</span></label>
+    <label><input type="checkbox"> <span>Restaurant reservations &mdash; <a href="https://salumeriaroscioli.com/en/pages/prenota" target="_blank">Roscioli</a>, <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d2450407-Reviews-Flavio_al_Velavevodetto-Rome_Lazio.html" target="_blank">Flavio al Velavevodetto</a></span></label>
+    <label><input type="checkbox"> <span><a href="https://galleriaborghese.beniculturali.it/en/" target="_blank">Borghese Gallery</a> timed entry (sells out months ahead)</span></label>
+    <label><input type="checkbox"> <span><a href="https://www.coopculture.it/en/events/colosseum-underground-and-arena/" target="_blank">Colosseum Underground + Arena Floor</a> tickets</span></label>
+    <label><input type="checkbox"> <span>Travel insurance</span></label>
+  </div>
+
+  <div class="checklist">
+    <h3>September 2026 (1 month out)</h3>
+    <label><input type="checkbox"> <span>Confirm all reservations</span></label>
+    <label><input type="checkbox"> <span>Download apps: <a href="https://www.trenitalia.com/en.html" target="_blank">Trenitalia</a>, Google Maps offline, taxi</span></label>
+    <label><input type="checkbox"> <span>Currency &mdash; euros or ATM plan (Bancomat, avoid Euronet)</span></label>
+    <label><input type="checkbox"> <span>Confirm wedding RSVP + logistics</span></label>
+  </div>
+
+  <div class="checklist">
+    <h3>1 Week Before</h3>
+    <label><input type="checkbox"> <span>Weather check &rarr; finalize wardrobe</span></label>
+    <label><input type="checkbox"> <span>Pack baby bag for flights</span></label>
+    <label><input type="checkbox"> <span>Charge devices, download kids' shows</span></label>
+    <label><input type="checkbox"> <span>Confirm car service or train tickets Rome &rarr; Lucca</span></label>
   </div>
 </div>
 
-<!-- ROME SECTION -->
-<section class="rome-section">
-  <div class="container">
-    <h2>Rome</h2>
-    <p class="section-intro">October 2–6 — 5 nights exploring the Eternal City. Gateway to history, food, art, and la dolce vita.</p>
-
-    <div class="accommodation-grid">
-      <div class="accom-card">
-        <div class="accom-image">🏛️</div>
-        <div class="accom-content">
-          <div class="accom-name">Hotel Eden</div>
-          <div class="accom-type">5-Star Luxury</div>
-          <div class="accom-detail"><strong>Location:</strong> Via Ludovisi, Centro</div>
-          <div class="accom-detail"><strong>Rooftop:</strong> Panoramic views of the city</div>
-          <div class="accom-detail"><strong>Pool:</strong> Yes, terraced garden</div>
-          <a href="https://www.dorchestercollection.com/en/rome/hotel-eden/" target="_blank" class="accom-link">Visit Hotel Eden</a>
-        </div>
-      </div>
-
-      <div class="accom-card">
-        <div class="accom-image">🍷</div>
-        <div class="accom-content">
-          <div class="accom-name">Antico Convento</div>
-          <div class="accom-type">Boutique</div>
-          <div class="accom-detail"><strong>Location:</strong> Piazza Navona area</div>
-          <div class="accom-detail"><strong>Style:</strong> Historic convent conversion</div>
-          <div class="accom-detail"><strong>Size:</strong> 5 rooms, intimate</div>
-          <a href="https://www.anticoaconvento.com/" target="_blank" class="accom-link">Visit Antico Convento</a>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 1.5em;">Day-by-Day Itinerary</h3>
-
-    <div class="day-card rome active">
-      <div class="day-header">
-        <h4 class="day-title">Day 1: Arrival — October 2</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">10:00 AM</span>
-          <div class="day-description">Arrive at FCO (Fiumicino Airport). Transfer to Hotel Eden.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">1:00 PM</span>
-          <div class="day-description">Check in, lunch at the hotel terrace overlooking the city. Rest and acclimate.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">5:00 PM</span>
-          <div class="day-description">Walk to Piazza Navona and explore the fountains and surrounding area. Aperitivo at a local cafe.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">7:30 PM</span>
-          <div class="day-description">Dinner at a traditional Roman trattoria near the hotel.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card rome">
-      <div class="day-header">
-        <h4 class="day-title">Day 2: Ancient Rome — October 3</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">8:00 AM</span>
-          <div class="day-description">Early breakfast at the hotel. Skip the crowds at the Colosseum.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">9:00 AM</span>
-          <div class="day-description">Guided tour: Colosseum, Roman Forum, Palatine Hill (3 hours, pre-booked).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">1:00 PM</span>
-          <div class="day-description">Lunch at a family-run restaurant near the Forum.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">3:00 PM</span>
-          <div class="day-description">Rest at hotel or visit nearby shop for gelato and espresso.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">6:00 PM</span>
-          <div class="day-description">Sunset from Gianicolo Hill. Wine and nibbles.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">8:00 PM</span>
-          <div class="day-description">Dinner in Trastevere (bohemian neighborhood with cobblestone charm).</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card rome">
-      <div class="day-header">
-        <h4 class="day-title">Day 3: Vatican & Sistine — October 4</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">8:00 AM</span>
-          <div class="day-description">Early entry: Vatican Museums and Sistine Chapel (pre-booked, skip-the-line).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">12:30 PM</span>
-          <div class="day-description">St. Peter's Basilica climb to the dome (optional, 330 steps).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">2:00 PM</span>
-          <div class="day-description">Lunch near Castel Sant'Angelo with Tiber views.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">4:00 PM</span>
-          <div class="day-description">Leisurely walk through Trastevere or explore Ghetto district.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">7:00 PM</span>
-          <div class="day-description">Dinner at Michelin-recommended restaurant (reserve in advance).</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card rome">
-      <div class="day-header">
-        <h4 class="day-title">Day 4: Food & Hidden Gems — October 5</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">10:00 AM</span>
-          <div class="day-description">Food market tour: Campo de' Fiori and local food scene (2-hour guided tour).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">12:00 PM</span>
-          <div class="day-description">Lunch with the tour group or find a quiet corner for pasta.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">3:00 PM</span>
-          <div class="day-description">Explore lesser-known areas: Spanish Steps, Villa d'Este side streets, Basilica di Santa Maria Maggiore.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">6:00 PM</span>
-          <div class="day-description">Gelato and people-watching at Trevi Fountain (at sunset to avoid peak crowds).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">8:00 PM</span>
-          <div class="day-description">Casual dinner, prepare for early departure to Lucca.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card rome">
-      <div class="day-header">
-        <h4 class="day-title">Day 5: Departure to Lucca — October 6</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">8:00 AM</span>
-          <div class="day-description">Breakfast at hotel. Last-minute shopping or sightseeing if time allows.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">11:00 AM</span>
-          <div class="day-description">Check out and transfer to Rome Termini Station or FCO airport for rental car pickup.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">12:30 PM</span>
-          <div class="day-description">Drive to Lucca (3.5–4 hours via A11).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">4:30 PM</span>
-          <div class="day-description">Arrive in Lucca. Check in to accommodation and settle in.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">6:30 PM</span>
-          <div class="day-description">Stroll the medieval walls and dinner nearby.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LUCCA SECTION -->
-<section class="lucca-section">
-  <div class="container">
-    <h2>Lucca</h2>
-    <p class="section-intro">October 6–8 — 3 nights in this charming walled city. Wine, Renaissance art, and countryside charm.</p>
-
-    <div class="accommodation-grid">
-      <div class="accom-card">
-        <div class="accom-image">🌿</div>
-        <div class="accom-content">
-          <div class="accom-name">Villa San Michele</div>
-          <div class="accom-type">Country Villa</div>
-          <div class="accom-detail"><strong>Location:</strong> Outside Lucca, views of countryside</div>
-          <div class="accom-detail"><strong>Style:</strong> Historic villa, 8 rooms</div>
-          <div class="accom-detail"><strong>Amenities:</strong> Pool, restaurant</div>
-          <a href="https://www.villasanmichele.com/" target="_blank" class="accom-link">Visit Villa San Michele</a>
-        </div>
-      </div>
-
-      <div class="accom-card">
-        <div class="accom-image">🏰</div>
-        <div class="accom-content">
-          <div class="accom-name">Palazzo Buonvisi</div>
-          <div class="accom-type">Historic Palace Hotel</div>
-          <div class="accom-detail"><strong>Location:</strong> Inside the walled city center</div>
-          <div class="accom-detail"><strong>Style:</strong> Renaissance palazzo converted to luxury hotel</div>
-          <div class="accom-detail"><strong>Rooms:</strong> 12, intimate</div>
-          <a href="https://www.palazzobuonvisi.it/" target="_blank" class="accom-link">Visit Palazzo Buonvisi</a>
-        </div>
-      </div>
-
-      <div class="accom-card">
-        <div class="accom-image">🌻</div>
-        <div class="accom-content">
-          <div class="accom-name">Fattoria di Fugnano (Top Pick)</div>
-          <div class="accom-type">Agriturisimo VRBO</div>
-          <div class="accom-detail"><strong>Location:</strong> Countryside between Lucca and Pisa</div>
-          <div class="accom-detail"><strong>Style:</strong> Restored farmhouse, family-run</div>
-          <div class="accom-detail"><strong>Amenities:</strong> Pool, orchard, self-catering options</div>
-          <a href="https://www.vrbo.com/it/fattoria-di-fugnano" target="_blank" class="accom-link">Visit Fattoria di Fugnano</a>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 1.5em;">Day-by-Day Itinerary</h3>
-
-    <div class="day-card lucca active">
-      <div class="day-header">
-        <h4 class="day-title">Day 6: Lucca Arrival & Exploration — October 6</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">4:30 PM</span>
-          <div class="day-description">Arrive in Lucca. Check into accommodation. Walk the medieval walls at sunset.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">6:30 PM</span>
-          <div class="day-description">Dinner at local restaurant. Sample Tuscan specialties (ribollita, bistecca alla fiorentina).</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card lucca">
-      <div class="day-header">
-        <h4 class="day-title">Day 7: Wine Country & Villages — October 7</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">9:00 AM</span>
-          <div class="day-description">Drive to Chianti region (45 minutes). Visit a family-owned winery for tasting and lunch.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">1:00 PM</span>
-          <div class="day-description">Winery lunch: local cheese, cured meats, fresh pasta, paired wines.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">3:30 PM</span>
-          <div class="day-description">Drive to Monteriggioni (hilltop village) or Gaiole in Chianti. Explore cobblestone streets.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">6:00 PM</span>
-          <div class="day-description">Return to Lucca. Aperitivo at Piazza dell'Anfiteatro.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">7:30 PM</span>
-          <div class="day-description">Dinner at trattoria specializing in handmade pasta.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card lucca">
-      <div class="day-header">
-        <h4 class="day-title">Day 8: Departure to Val d'Orcia — October 8</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">9:00 AM</span>
-          <div class="day-description">Leisurely breakfast. Final walk through Lucca's Renaissance churches and cathedral.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">11:00 AM</span>
-          <div class="day-description">Check out and drive to Val d'Orcia (2.5–3 hours via A11 and SR146).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">2:30 PM</span>
-          <div class="day-description">Arrive in Val d'Orcia. Check in and rest.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">5:00 PM</span>
-          <div class="day-description">Golden hour photography: cypress-lined roads, rolling hills, Pienza in the distance.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">7:30 PM</span>
-          <div class="day-description">Dinner at a farmhouse restaurant overlooking the Orcia Valley.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VAL D'ORCIA SECTION -->
-<section class="valdorcia-section">
-  <div class="container">
-    <h2>Val d'Orcia</h2>
-    <p class="section-intro">October 8–10 — 2 nights in this UNESCO World Heritage landscape. Golden light, rolling hills, perfect wine.</p>
-
-    <div class="accommodation-grid">
-      <div class="accom-card">
-        <div class="accom-image">🌅</div>
-        <div class="accom-content">
-          <div class="accom-name">Podere Salicotto</div>
-          <div class="accom-type">Agriturismo</div>
-          <div class="accom-detail"><strong>Location:</strong> Heart of Val d'Orcia</div>
-          <div class="accom-detail"><strong>Style:</strong> Restored farmhouse, family-run</div>
-          <div class="accom-detail"><strong>Amenities:</strong> Pool, restaurant, wine cellar</div>
-          <a href="https://www.poderesalicotto.com/" target="_blank" class="accom-link">Visit Podere Salicotto</a>
-        </div>
-      </div>
-
-      <div class="accom-card">
-        <div class="accom-image">🏛️</div>
-        <div class="accom-content">
-          <div class="accom-name">Il Convento</div>
-          <div class="accom-type">Monastery Hotel</div>
-          <div class="accom-detail"><strong>Location:</strong> Pienza, adjacent hilltop town</div>
-          <div class="accom-detail"><strong>Style:</strong> Historic convent conversion, boutique</div>
-          <div class="accom-detail"><strong>Rooms:</strong> 7, intimate and spiritual</div>
-          <a href="https://www.ilconventopienza.com/" target="_blank" class="accom-link">Visit Il Convento</a>
-        </div>
-      </div>
-
-      <div class="accom-card">
-        <div class="accom-image">🍷</div>
-        <div class="accom-content">
-          <div class="accom-name">Castiglion d'Orcia (Rocca d'Orcia)</div>
-          <div class="accom-type">Castle Estate</div>
-          <div class="accom-detail"><strong>Location:</strong> Medieval village with panoramic views</div>
-          <div class="accom-detail"><strong>Style:</strong> Historic fortress apartments</div>
-          <div class="accom-detail"><strong>Amenities:</strong> Restaurants, wine bar, shops</div>
-          <a href="https://www.castiglionedorcia.net/" target="_blank" class="accom-link">Visit Castiglion d'Orcia</a>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 1.5em;">Day-by-Day Itinerary</h3>
-
-    <div class="day-card valdorcia active">
-      <div class="day-header">
-        <h4 class="day-title">Day 9: Val d'Orcia Discovery — October 9</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">9:00 AM</span>
-          <div class="day-description">Sunrise hike to Pienza. Walk the cypress-lined road (iconic Tuscany landscape).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">11:00 AM</span>
-          <div class="day-description">Explore Pienza: Renaissance town, Piazza Pio II, Pecorino cheese tasting at a local shop.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">1:30 PM</span>
-          <div class="day-description">Lunch at a farm-to-table restaurant in Pienza or nearby.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">3:30 PM</span>
-          <div class="day-description">Drive to Montalcino (30 minutes). Visit Brunello wine cellars (pre-booked tasting).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">6:00 PM</span>
-          <div class="day-description">Return to accommodation. Rest and prepare for dinner.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">7:30 PM</span>
-          <div class="day-description">Sunset dinner overlooking the Val d'Orcia.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card valdorcia">
-      <div class="day-header">
-        <h4 class="day-title">Day 10: Return to Rome — October 10</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">8:30 AM</span>
-          <div class="day-description">Final breakfast in the Tuscan countryside. Collect souvenirs (wine, pasta, cheese).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">10:00 AM</span>
-          <div class="day-description">Drive back to Rome (3.5–4 hours via A11).</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">2:00 PM</span>
-          <div class="day-description">Arrive in Rome. Return rental car and transfer to hotel or airport.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">Evening</span>
-          <div class="day-description">Depending on flight time: final dinner in Rome, last-minute sightseeing, or rest before departure.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="day-card valdorcia">
-      <div class="day-header">
-        <h4 class="day-title">Day 11: Final Day in Rome — October 11 (Optional)</h4>
-        <span class="day-toggle">↓</span>
-      </div>
-      <div class="day-details">
-        <div class="day-activity">
-          <span class="day-time">Morning</span>
-          <div class="day-description">If flying out later in the day: visit any missed attractions or museums.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">Afternoon</span>
-          <div class="day-description">Leisurely lunch and coffee. Pack final souvenirs.</div>
-        </div>
-        <div class="day-activity">
-          <span class="day-time">Evening</span>
-          <div class="day-description">Depart for airport or continue travels.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPARTURE SECTION -->
-<section style="background: white; text-align: center;">
-  <div class="container">
-    <h2>Departure</h2>
-    <p class="section-intro">October 12–13</p>
-    <p style="font-size: 1.1em; color: var(--text-secondary); margin-bottom: 30px;">
-      Flight home on October 13. Return rental car, pack memories, and plan the next adventure.
-    </p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer style="background: var(--text); color: white; padding: 40px 20px; text-align: center;">
-  <div class="container">
-    <p style="margin: 0; font-size: 0.95em;">Enjoy every moment in Italy. Ciao, bella!</p>
-  </div>
-</footer>
+<div class="footer">
+  Planned by Silas &middot; Last updated May 3, 2026
+</div>
 
 <script>
-  // Day card toggle functionality
-  document.querySelectorAll('.day-card').forEach(card => {
-    card.addEventListener('click', function() {
-      this.classList.toggle('active');
-    });
+function toggleDay(header) {
+  const content = header.nextElementSibling;
+  const toggle = header.querySelector('.toggle');
+  content.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+// Open first day of each section by default
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.leg-section').forEach(section => {
+    const first = section.querySelector('.day-content');
+    const firstToggle = section.querySelector('.toggle');
+    if (first) { first.classList.add('open'); }
+    if (firstToggle) { firstToggle.classList.add('open'); }
   });
+});
 
-  // Offline image handling
-  window.addEventListener('offline', function() {
-    document.querySelectorAll('img').forEach(img => {
-      img.style.display = 'none';
-      if (img.nextElementSibling && img.nextElementSibling.tagName === 'SVG') {
-        img.nextElementSibling.innerHTML = '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14">Image loads when online</text>';
-      }
-    });
-  });
-
-  // Fallback for missing Unsplash images
-  document.addEventListener('DOMContentLoaded', function() {
-    if (!window.navigator.onLine) {
-      document.querySelectorAll('.hero-bg').forEach(bg => {
-        bg.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-      });
-    }
-  });
-
-  // SVG placeholder for accommodation cards
-  document.querySelectorAll('.accom-image').forEach(card => {
-    if (!card.querySelector('img')) {
-      const svg = document.createElement('svg');
-      svg.setAttribute('viewBox', '0 0 200 200');
-      svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-      svg.style.cssText = 'width:100%;height:100%;';
-      svg.innerHTML = `
-        <defs>
-          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
-            <stop offset="100%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <rect width="200" height="200" fill="url(#grad)"></rect>
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="14">Image loads when online</text>
-      `;
-      if (!window.navigator.onLine) {
-        card.appendChild(svg);
-      }
-    }
-  });
+// Graceful image fallback
+document.querySelectorAll('img[data-fallback]').forEach(img => {
+  img.onerror = function() {
+    this.style.background = 'linear-gradient(135deg, #E8E5E0 0%, #D5D0C8 100%)';
+    this.style.minHeight = this.classList.contains('section-hero-img') ? '280px' : '200px';
+    this.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="280"><rect fill="%23E8E5E0" width="400" height="280"/><text x="50%" y="50%" text-anchor="middle" fill="%23999" font-family="sans-serif" font-size="14">Image loads when online</text></svg>');
+  };
 });
 </script>
 
