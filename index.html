@@ -519,6 +519,14 @@
   .lucca-section .day-header { border-left: 3px solid var(--lucca); }
   .valdorcia-section .day-header { border-left: 3px solid var(--valdorcia); }
 
+  /* ===== RIVIERA (Italian Riviera) ===== */
+  :root { --riviera: #1F6F78; --riviera-light: #E6F3F4; }
+  .route-stop.riviera .city { color: var(--riviera); }
+  .riviera-section .leg-header { border-color: var(--riviera); }
+  .riviera-section .leg-badge { background: var(--riviera-light); }
+  .riviera-section .section-label { color: var(--riviera); background: var(--riviera-light); }
+  .riviera-section .day-header { border-left: 3px solid var(--riviera); }
+
   /* Image error fallback */
   img[data-fallback] {
     background: linear-gradient(135deg, #E8E5E0 0%, #D5D0C8 100%);
@@ -547,9 +555,9 @@
   <div class="route-arrow">&rarr;</div>
   <div class="route-stop lucca"><div class="city">Lucca</div><div class="nights">4 nights</div></div>
   <div class="route-arrow">&rarr;</div>
-  <div class="route-stop valdorcia"><div class="city">Val d'Orcia</div><div class="nights">3 nights</div></div>
+  <div class="route-stop riviera"><div class="city">Sestri Levante</div><div class="nights">3 nights</div></div>
   <div class="route-arrow">&rarr;</div>
-  <div class="route-stop"><div class="city">Florence</div><div class="nights">Fly home</div></div>
+  <div class="route-stop"><div class="city">Pisa &#9992;</div><div class="nights">Fly home</div></div>
 </div>
 
 <!-- ============ ROME ============ -->
@@ -720,28 +728,28 @@
     <div class="time-block"><div class="time-label">Evening &middot; 7:30pm</div><p>Last Lucca dinner. <a href="https://www.bucadisantantonio.com/en/" target="_blank">Buca di Sant&rsquo;Antonio</a> &mdash; Lucca&rsquo;s most storied restaurant, open since 1782. Pack tonight for tomorrow&rsquo;s drive south.</p></div>
   </div></div>
 
-  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 8 &mdash; Sun, Oct 11: Lucca &rarr; Val d&rsquo;Orcia <span class="toggle">&#9660;</span></div><div class="day-content">
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 8 &mdash; Sun, Oct 11: Tuscany Morning &rarr; The Riviera <span class="toggle">&#9660;</span></div><div class="day-content">
     <div class="day-highlights">
-      <img src="https://images.unsplash.com/photo-1678181350601-871929bdf58c?w=320&q=80" alt="Tuscan countryside drive" data-fallback>
-      <img src="https://images.unsplash.com/photo-1650274962056-d05ef8d11262?w=320&q=80" alt="Tuscan hilltop town" data-fallback>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Villa_reale_di_marlia%2C_laghetto_04.JPG/500px-Villa_reale_di_marlia%2C_laghetto_04.JPG" alt="Villa Reale di Marlia gardens" data-fallback>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Sestri_Levante_and_Baia_del_Silenzio%2C_the_Bay_of_Silence.jpg/500px-Sestri_Levante_and_Baia_del_Silenzio%2C_the_Bay_of_Silence.jpg" alt="Sestri Levante Bay of Silence" data-fallback>
     </div>
-    <div class="time-block"><div class="time-label">Morning</div><p>Last coffee at Casa Maria. Load the car. Say goodbye to the Lucchese hills.</p></div>
-    <div class="time-block"><div class="time-label">Late Morning &middot; 10am</div><p>Drive to Val d&rsquo;Orcia (~2&ndash;2.5 hrs). Route through <a href="https://www.tripadvisor.com/Tourism-g187902-Siena_Tuscany-Vacations.html" target="_blank">Siena</a> &mdash; park outside the walls and walk into <a href="https://en.wikipedia.org/wiki/Piazza_del_Campo" target="_blank">Piazza del Campo</a> for gelato and the shell-shaped piazza. Quick lunch at a Siena trattoria or push through to Castello Di Viona.</p></div>
-    <div class="time-block"><div class="time-label">Afternoon</div><p>Check into <a href="https://www.castellodivelona.it/" target="_blank">Castello Di Viona</a>. Settle in, explore the property. Thermal pool if it&rsquo;s warm enough. Let the landscape hit you &mdash; 360&deg; of Montalcino hills.</p></div>
-    <div class="time-block"><div class="time-label">Evening</div><p>Dinner on-site at the castle restaurant or a nearby trattoria. First Brunello of the leg.</p></div>
+    <div class="time-block"><div class="time-label">Morning</div><p>Slow start at Casa Maria, then a flat, stroller-easy Tuscany morning 10 minutes away at the <a href="https://www.villarealedimarlia.it/en/" target="_blank">Villa Reale di Marlia</a> &mdash; royal villa gardens, fountains and lawns, gravel paths the stroller handles. Levi runs, the grandmas swoon. (Open daily 10am through Oct 29 &mdash; buy tickets online.)</p></div>
+    <div class="time-block"><div class="time-label">Midday</div><p>Long lunch at a family-run winery in the Lucchese hills &mdash; <a href="https://www.fattoriasardi.com/" target="_blank">Fattoria Sardi</a> or Fattoria Colle Verde. Book ahead and mention the baby; they&rsquo;ll set up shade and a spot for the stroller.</p></div>
+    <div class="time-block"><div class="time-label">Afternoon</div><p>Drive north to <strong>Sestri Levante</strong> &mdash; 1h10 on the A12, the easiest leg of the trip. Check into Hotel Vis &agrave; Vis, perched over the bay.</p></div>
+    <div class="time-block"><div class="time-label">Evening</div><p>Golden hour on the <a href="https://en.wikipedia.org/wiki/Sestri_Levante" target="_blank">Baia del Silenzio</a> &mdash; flat promenade, sandy bay. Dinner in the flat old town at <strong>Osteria Mattana</strong>: trofie al pesto, stuffed mussels.</p></div>
   </div></div>
 
 </div>
 
-<!-- ============ VAL D'ORCIA ============ -->
+<!-- ============ ITALIAN RIVIERA ============ -->
 <div class="section-hero">
-  <img class="section-hero-img" src="https://images.unsplash.com/photo-1653843034003-467e337f4c99?w=1200&q=80" alt="Val d'Orcia cypress roads rolling hills" data-fallback>
+  <img class="section-hero-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Sestri_Levante_and_Baia_del_Silenzio%2C_the_Bay_of_Silence.jpg/1280px-Sestri_Levante_and_Baia_del_Silenzio%2C_the_Bay_of_Silence.jpg" alt="Sestri Levante and the Bay of Silence" data-fallback>
 </div>
-<div class="leg-section valdorcia-section has-hero">
+<div class="leg-section riviera-section has-hero">
   <div class="leg-header">
-    <div class="leg-badge">&#127863;</div>
+    <div class="leg-badge">&#127958;</div>
     <div>
-      <h2>Val d'Orcia</h2>
+      <h2>Italian Riviera</h2>
     </div>
     <div class="leg-dates">Oct 11-14 &middot; 3 Nights</div>
   </div>
@@ -750,64 +758,57 @@
 
   <div class="accom-grid">
     <div class="accom-card recommended">
-      <img class="accom-thumb" src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=400&q=80" alt="Castle hotel with infinity pool" data-fallback>
+      <img class="accom-thumb" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Sestri_Levante_and_Baia_del_Silenzio%2C_the_Bay_of_Silence.jpg/500px-Sestri_Levante_and_Baia_del_Silenzio%2C_the_Bay_of_Silence.jpg" alt="Sestri Levante Bay of Silence" data-fallback>
       <div class="accom-body">
-        <span class="card-badge badge-pick">Confirmed</span>
-        <div class="card-type">Hotel &middot; 5-Star &middot; Thermal Spa</div>
-        <div class="card-title"><a href="https://www.castellodivelona.it/" target="_blank">Castello Di Viona</a></div>
-        <div class="card-meta">Montalcino hilltop &middot; 11th-century castle &middot; 360&deg; views</div>
-        <div class="card-desc">Only castle with thermal water. Pool, thermal spa, own winery, olive oil. Grandmas will love the spa. On-site restaurant = don&rsquo;t have to drive. Three nights here gives everyone time to properly decompress.</div>
+        <span class="card-badge badge-pick">Top Pick</span>
+        <div class="card-type">Hotel &middot; 4-Star &middot; On the Baia del Silenzio</div>
+        <div class="card-title"><a href="https://hotelvisavis.com/en/" target="_blank">Hotel Vis &agrave; Vis</a></div>
+        <div class="card-meta">Sestri Levante &middot; Hillside over the old town &middot; Pool + sea views</div>
+        <div class="card-desc">Perched above Sestri&rsquo;s old town with a private lift down to the Baia del Silenzio. Pool and sea-view terraces to reset the kids, a flat walk to the sandy bay, parking on site. Sestri is the calm, stroller-friendly base on the Tigullio &mdash; about an hour north of the Cinque Terre, without living in the crowds.</div>
         <div class="card-details">
-          <span class="detail-pill">Thermal spa</span>
           <span class="detail-pill">Pool</span>
-          <span class="detail-pill">Own winery</span>
-          <span class="detail-pill">On-site restaurant</span>
-          <span class="detail-pill">360&deg; views</span>
+          <span class="detail-pill">Sea views</span>
+          <span class="detail-pill">Lift to the beach</span>
+          <span class="detail-pill">Parking</span>
+          <span class="detail-pill">Flat to old town</span>
         </div>
-        <div class="card-price">$800&ndash;1,400/night (both rooms)</div>
+        <div class="card-price">Confirm Oct rates (2 rooms)</div>
         <div class="card-links">
-          <a href="https://www.castellodivelona.it/" target="_blank">Book Direct</a>
-          <a href="https://www.booking.com/hotel/it/castello-di-velona-resort-thermal-spa-winery.html" target="_blank">Booking.com</a>
+          <a href="https://hotelvisavis.com/en/" target="_blank">Book Direct</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="advisor-note"><strong>Castello Di Viona</strong> is confirmed. 11th-century castle with thermal spa, own winery, and 360&deg; Montalcino views. Three nights gives you a proper Tuscan decompression &mdash; spa day, wine drive, and a slow last morning before flying home. Grandmas get spa treatments as a thank-you for wedding kid duty.</div>
+  <div class="advisor-note"><strong>Hotel Vis &agrave; Vis</strong>, Sestri Levante. No boats and not a lot of walking &mdash; so this leg is flat and easy: a sandy bay below the hotel, one relaxed Cinque Terre village by train, and a gentle Riviera town. Everything stroller-friendly, no ferries.</div>
 
 <div class="section-label">Day by Day</div>
 
-  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 9 &mdash; Mon, Oct 12: Thermal Spa + Montalcino <span class="toggle">&#9660;</span></div><div class="day-content">
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 9 &mdash; Mon, Oct 12: Monterosso (the easy Cinque Terre) <span class="toggle">&#9660;</span></div><div class="day-content">
     <div class="day-highlights">
-      <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=320&q=80" alt="Castle hotel pool" data-fallback>
-      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=320&q=80" alt="Wine tasting" data-fallback>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Monterosso_al_Mare-panorama-paese.jpg/500px-Monterosso_al_Mare-panorama-paese.jpg" alt="Monterosso al Mare" data-fallback>
     </div>
-    <div class="time-block"><div class="time-label">Morning</div><p>Slow morning at Castello Di Viona. Breakfast overlooking the valley. No agenda &mdash; you&rsquo;ve been running for a week. Grandmas hit the thermal spa as a thank-you for wedding kid duty.</p></div>
-    <div class="time-block"><div class="time-label">Late Morning &middot; 11am</div><p>Drive into <a href="https://www.tripadvisor.com/Tourism-g635634-Montalcino_Tuscany-Vacations.html" target="_blank">Montalcino</a> (15 min). Walk the fortress, browse enotecas. Pick up Brunello to bring home &mdash; you&rsquo;re buying direct from the source.</p></div>
-    <div class="time-block"><div class="time-label">Afternoon</div><p>Back to the castle for naps and pool time. Or the <a href="https://www.tripadvisor.com/Attraction_Review-g635634-d11922613-Reviews-Thermal_pool_Bagno_Vignoni-Montalcino_Tuscany.html" target="_blank">Bagno Vignoni</a> hot springs (20 min) &mdash; a medieval village built around a natural thermal pool. One of the most surreal things in Tuscany.</p></div>
-    <div class="time-block"><div class="time-label">Evening</div><p>Dinner at <a href="https://www.tripadvisor.com/Restaurant_Review-g635634-d1236834-Reviews-Ristorante_Poggio_Antico-Montalcino_Tuscany.html" target="_blank">Ristorante di Poggio Antico</a> &mdash; Michelin-recognized, wine estate views. Or keep it simple at the castle restaurant.</p></div>
+    <div class="time-block"><div class="time-label">Morning</div><p>Train from Sestri to <a href="https://en.wikipedia.org/wiki/Monterosso_al_Mare" target="_blank">Monterosso</a> &mdash; ~40 min, mostly direct. The only flat, stroller-friendly village in the Cinque Terre, and the one with a real sandy beach.</p></div>
+    <div class="time-block"><div class="time-label">Midday</div><p>Spend the whole day right here &mdash; beach, roll the promenade, long lunch, gelato. No village-hopping, no stairs, no rush. (Just Monterosso, so skip the Cinque Terre Card &mdash; plain regional tickets are all you need.)</p></div>
+    <div class="time-block"><div class="time-label">Afternoon</div><p>Train back to Sestri by late afternoon. Pool time, then dinner in the old town.</p></div>
   </div></div>
 
-  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 10 &mdash; Tue, Oct 13: The Tuscan Drive <span class="toggle">&#9660;</span></div><div class="day-content">
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 10 &mdash; Tue, Oct 13: Chiavari &mdash; Easy Riviera Day <span class="toggle">&#9660;</span></div><div class="day-content">
     <div class="day-highlights">
-      <img src="https://images.unsplash.com/photo-1664462114317-c1a7eead5ea6?w=320&q=80" alt="Pienza cheese shop" data-fallback>
-      <img src="https://images.unsplash.com/photo-1650274962056-d05ef8d11262?w=320&q=80" alt="Tuscan hilltop town" data-fallback>
-      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=320&q=80" alt="Wine tasting" data-fallback>
-      <img src="https://images.unsplash.com/photo-1684836571999-f3dc511935e7?w=320&q=80" alt="Cypress road Val d'Orcia" data-fallback>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Chiavari-panorama_dalla_ss1_%282020%29.jpg/500px-Chiavari-panorama_dalla_ss1_%282020%29.jpg" alt="Chiavari, Liguria" data-fallback>
     </div>
-    <div class="time-block"><div class="time-label">Stop 1 &middot; Pienza</div><p><a href="https://www.tripadvisor.com/Tourism-g194847-Pienza_Tuscany-Vacations.html" target="_blank">Pienza</a> &mdash; the pecorino capital. Buy cheese everywhere. The view from the town walls = every Tuscany calendar. Family photo here.</p></div>
-    <div class="time-block"><div class="time-label">Stop 2 &middot; Montepulciano</div><p><a href="https://www.tripadvisor.com/Tourism-g194833-Montepulciano_Tuscany-Vacations.html" target="_blank">Montepulciano</a> &mdash; wine tasting at <a href="https://www.contucci.it/en/" target="_blank">Cantina Contucci</a> (making wine since 1008). Lunch at <a href="https://www.tripadvisor.com/Restaurant_Review-g194833-d806078-Reviews-Osteria_Acquacheta-Montepulciano_Tuscany.html" target="_blank">Osteria Acquacheta</a> &mdash; famous bistecca, shared tables. Reserve ahead.</p></div>
-    <div class="time-block"><div class="time-label">Afternoon Drive</div><p>Back roads between Montepulciano and Montalcino. Famous cypress road near <a href="https://www.tripadvisor.com/Attraction_Review-g194847-d4752047-Reviews-Cappella_della_Madonna_di_Vitaleta-Pienza_Tuscany.html" target="_blank">Cappella della Madonna di Vitaleta</a>. Stop whenever the light does something.</p></div>
-    <div class="time-block"><div class="time-label">Stop 3 &middot; Montalcino</div><p><a href="https://www.tripadvisor.com/Attraction_Review-g635634-d246509-Reviews-Fortezza_di_Montalcino-Montalcino_Tuscany.html" target="_blank">Fortezza di Montalcino</a> wine bar &mdash; world's best Brunellos, &euro;10&ndash;15/glass.</p></div>
-    <div class="time-block"><div class="time-label">Evening &middot; Date Night</div><p>Grandmas take kids. Adam + Lindsey splurge &mdash; the castle restaurant or drive to <a href="https://www.tripadvisor.com/Restaurant_Review-g194847-d1068814-Reviews-La_Bandita_Townhouse-Pienza_Tuscany.html" target="_blank">La Bandita Townhouse</a> in Pienza for a modern Tuscan dinner with views over the valley.</p></div>
+    <div class="time-block"><div class="time-label">Morning</div><p>Slow morning in Sestri &mdash; beach time, no agenda.</p></div>
+    <div class="time-block"><div class="time-label">Midday</div><p><a href="https://en.wikipedia.org/wiki/Chiavari" target="_blank">Chiavari</a> &mdash; ~15 min down the coast by car or a short train hop. Flat arcaded old town and a flat seafront promenade; you set the pace. Park once, settle under the porticoes for a caff&egrave; and gelato, let Levi loose in a piazza or the beachfront playground. No boat, no climbing.</p></div>
+    <div class="time-block"><div class="time-label">Alternatives</div><p>Want the upscale-harbor feel? <strong>Santa Margherita Ligure</strong> is a ~30-min drive &mdash; same flat palm-lined promenade, still boat-free. Want nothing at all? Stay in Sestri: the Vis &agrave; Vis pool and the two bays. After a wedding, the rest day is a legit win.</p></div>
   </div></div>
 
-  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 11 &mdash; Wed, Oct 14: Last Morning &rarr; Fly Home <span class="toggle">&#9660;</span></div><div class="day-content">
+  <div class="day-card"><div class="day-header" onclick="toggleDay(this)">Day 11 &mdash; Wed, Oct 14: Sestri &rarr; Pisa &rarr; Fly Home <span class="toggle">&#9660;</span></div><div class="day-content">
     <div class="day-highlights">
-      <img src="https://images.unsplash.com/photo-1501952476817-d7ae22e8ee4e?w=320&q=80" alt="Morning light Tuscany" data-fallback>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Italy_-_Pisa_-_Leaning_Tower.jpg/500px-Italy_-_Pisa_-_Leaning_Tower.jpg" alt="Leaning Tower of Pisa" data-fallback>
     </div>
-    <div class="time-block"><div class="time-label">Morning</div><p>Last Italian breakfast. Pack slowly. One more walk. Take the photos you forgot.</p></div>
-    <div class="time-block"><div class="time-label">Late Morning</div><p>Drive to <a href="https://www.aeroporto.firenze.it/en/" target="_blank">Florence airport (FLR)</a> ~1.5&ndash;2 hrs or <a href="https://www.pisa-airport.com/en/" target="_blank">Pisa (PSA)</a> ~2&ndash;2.5 hrs. Drop rental car. Fly home.</p></div>
+    <div class="time-block"><div class="time-label">Morning</div><p>Last Italian breakfast over the bay. Pack slowly, one more flat stroll along the Baia del Silenzio.</p></div>
+    <div class="time-block"><div class="time-label">Late Morning</div><p>Drive Sestri &rarr; <a href="https://www.pisa-airport.com/en/" target="_blank">Pisa airport (PSA)</a>, ~1h30. Drop the rental car. If the flight&rsquo;s late, a flat final stop at Pisa&rsquo;s Field of Miracles on the way.</p></div>
+    <div class="time-block"><div class="time-label">Fly Home</div><p>Pisa (PSA) &rarr; London Heathrow (LHR) &rarr; Nashville (BNA).</p></div>
   </div></div>
 </div>
 
@@ -818,7 +819,7 @@
   <div class="info-grid">
     <div class="info-card">
       <h3>&#9992; Flights</h3>
-      <p style="margin-bottom:8px;"><strong>Open-jaw:</strong> Fly into Rome (FCO), home from Florence (FLR) or Pisa (PSA).</p>
+      <p style="margin-bottom:8px;"><strong>Open-jaw:</strong> Into Rome (FCO); home from Pisa (PSA) via London Heathrow (LHR) &rarr; Nashville (BNA).</p>
       <ul>
         <li><a href="https://www.flyingblue.com/" target="_blank">Flying Blue</a> &mdash; 1:1 Amex transfer, instant. 50&ndash;70K biz one-way</li>
         <li><a href="https://flywith.virginatlantic.com/" target="_blank">Virgin Atlantic</a> &mdash; Delta One ~50K off-peak</li>
@@ -829,7 +830,7 @@
     </div>
     <div class="info-card">
       <h3>&#128663; Rental Car</h3>
-      <p><strong>Pick up:</strong> Pisa (station or airport), Oct 7<br><strong>Drop off:</strong> FLR or PSA, Oct 14<br><strong>Duration:</strong> 7 days</p>
+      <p><strong>Pick up:</strong> Pisa (station or airport), Oct 7<br><strong>Drop off:</strong> Pisa airport (PSA), Oct 14<br><strong>Duration:</strong> 7 days</p>
       <ul>
         <li>Automatic transmission, large SUV or minivan</li>
         <li>2 car seats: booster (Levi) + rear-facing (Logan)</li>
@@ -847,7 +848,7 @@
       <tr><td>Flights (6 people)</td><td>$5,000</td><td>$12,000</td><td class="notes">Points vs cash, economy vs business</td></tr>
       <tr><td>Rome &mdash; Six Senses (4 nights)</td><td colspan="2">$10,000</td><td class="notes">~$2,500/night &middot; Family Time offer</td></tr>
       <tr><td>Lucca &mdash; Casa Maria (4 nights)</td><td colspan="2">$4,000</td><td class="notes">~$1,000/night</td></tr>
-      <tr><td>Val d&rsquo;Orcia &mdash; Castello Di Viona (3 nights)</td><td colspan="2">$2,400&ndash;4,200</td><td class="notes">$800&ndash;1,400/night (both rooms)</td></tr>
+      <tr><td>Sestri Levante &mdash; Hotel Vis &agrave; Vis (3 nights)</td><td colspan="2">$1,500&ndash;3,000</td><td class="notes">2 rooms &middot; confirm Oct rates</td></tr>
       <tr><td>Rental car (7 days)</td><td>$560</td><td>$840</td><td class="notes">Automatic minivan/SUV</td></tr>
       <tr><td>Meals</td><td>$2,500</td><td>$4,500</td><td class="notes">Splurge + casual + villa cooking</td></tr>
       <tr><td>Activities / tours</td><td>$500</td><td>$1,200</td><td class="notes">Vatican, wine, galleries</td></tr>
@@ -864,12 +865,13 @@
     <label><input type="checkbox"> <span>Start searching flights &mdash; <a href="https://www.flyingblue.com/" target="_blank">Flying Blue promo awards</a> monthly</span></label>
     <label><input type="checkbox"> <span>Rome hotel confirmed &mdash; <a href="https://www.sixsenses.com/en/hotels-resorts/europe/italy/rome/offers/family-time/" target="_blank">Six Senses Rome</a> (Family Time offer)</span></label>
     <label><input type="checkbox"> <span>Lucca villa confirmed &mdash; <a href="https://www.vrbo.com/11144625ha" target="_blank">Casa Maria</a> (VRBO)</span></label>
-    <label><input type="checkbox"> <span>Val d&rsquo;Orcia confirmed &mdash; <a href="https://www.castellodivelona.it/" target="_blank">Castello Di Viona</a></span></label>
+    <label><input type="checkbox"> <span>Sestri Levante &mdash; <a href="https://hotelvisavis.com/en/" target="_blank">Hotel Vis &agrave; Vis</a> (Oct 11&ndash;14, 2 rooms)</span></label>
   </div>
 
   <div class="checklist">
     <h3>June&ndash;July 2026 (3&ndash;4 months out)</h3>
     <label><input type="checkbox"> <span>Book rental car (automatic, large, 2 car seats)</span></label>
+    <label><input type="checkbox"> <span><a href="https://www.villarealedimarlia.it/en/" target="_blank">Villa Reale di Marlia</a> tickets (Oct 11) + winery lunch (Fattoria Sardi / Colle Verde)</span></label>
     <label><input type="checkbox"> <span>Restaurant reservations &mdash; <a href="https://salumeriaroscioli.com/en/pages/prenota" target="_blank">Roscioli</a>, <a href="https://www.tripadvisor.com/Restaurant_Review-g187791-d2450407-Reviews-Flavio_al_Velavevodetto-Rome_Lazio.html" target="_blank">Flavio al Velavevodetto</a></span></label>
     <label><input type="checkbox"> <span><a href="https://galleriaborghese.beniculturali.it/en/" target="_blank">Borghese Gallery</a> timed entry (sells out months ahead)</span></label>
     <label><input type="checkbox"> <span><a href="https://www.coopculture.it/en/events/colosseum-underground-and-arena/" target="_blank">Colosseum Underground + Arena Floor</a> tickets</span></label>
@@ -894,7 +896,7 @@
 </div>
 
 <div class="footer">
-  Planned by Silas &middot; Last updated May 26, 2026
+  Planned by Silas &middot; Last updated June 18, 2026
 </div>
 
 <script>
